@@ -1,0 +1,82 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+    <div class="list-group" *ngIf='permissionList'>
+   
+<!-- 
+        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
+            <span>{{ 'Dashboard' | translate }}</span>
+        </a>
+
+ 
+    
+        <a [routerLink]="['/designation']" [routerLinkActive]="['router-link-active']" class="list-group-item"
+            *ngIf='permissionList["DesignationController"]["permission_id"] !== null'>
+            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+            <span>{{ 'Designation Management' | translate }}</span>
+        </a>
+      -->
+
+
+      <a [routerLink]="['/auth-job-list']" [routerLinkActive]="['router-link-active']" class="list-group-item"
+      *ngIf='permissionList["JobAppliedController"]["permission_id"] !== null'>
+      <i class="fa fa-fw fa-fw fa-list-ul"></i>&nbsp;
+      <span>{{ 'Job Board' | translate }}</span>
+  </a>
+
+
+  <a [routerLink]="['/resume']" [routerLinkActive]="['router-link-active']" class="list-group-item"
+  *ngIf='permissionList["JobAppliedController"]["permission_id"] !== null'>
+  <i class="fa fa-fw fa-pencil-square-o"></i>&nbsp;
+  <span>{{ 'Edit Resume ' | translate }}</span>
+</a>
+
+<a [routerLink]="['/view-resume']" [routerLinkActive]="['router-link-active']" class="list-group-item"
+*ngIf='permissionList["JobAppliedController"]["permission_id"] !== null'>
+<i class="fa fa-fw fa-wpforms"></i>&nbsp;
+<span>{{ 'View Resume ' | translate }}</span>
+</a>
+  <a [routerLink]="['/job-management']" [routerLinkActive]="['router-link-active']" class="list-group-item"
+  *ngIf='permissionList["JobAppliedController"]["permission_id"] !== null'>
+  <i class="fa  fa-clipboard"></i>&nbsp;
+  <span>{{ 'Applied Job Management' | translate }}</span>
+</a>
+<a [routerLink]="['/job-post-management']" [routerLinkActive]="['router-link-active']" class="list-group-item"
+*ngIf='permissionList["JobPostController"]["permission_id"] !== null'>
+<i class="fa fa-fw fa-list"></i>&nbsp;
+<span>{{ 'Job Post Management' | translate }}</span>
+</a>
+        <div class="nested-menu" *ngIf=' ((permissionList["AdminController"]["permission_id"]  || permissionList["AdminController"]["permission_id"]) !== null)'>
+            <a class="list-group-item" (click)="addExpandClass('user')">
+                <i class="fa fa-user-md"></i>&nbsp;
+                <span>{{ 'User Management' | translate }}</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'user'">
+                <ul class="submenu">
+                    <li>
+                        <a [routerLink]="['/role-permission']" [routerLinkActive]="['router-link-active']"
+                            *ngIf='permissionList["RoleController"]["permission_id"] !== null'>
+                            <i class="fa fa-fw fa-user-plus"></i>&nbsp;
+                            <span>{{ 'Role Permission' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/user-management']" [routerLinkActive]="['router-link-active']"
+                            *ngIf='permissionList["AdminController"] !== null'>
+                            <i class="fa fa-fw fa-user"></i>&nbsp;
+                            <span>{{ 'User' | translate }}</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+        </div>
+
+
+
+     
+    </div>
+    <div class="toggle-button" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
+        <i class="fa fa-fw fa-angle-double-left"></i>&nbsp;
+        <span>{{ 'Collapse Sidebar' | translate }}</span>
+    </div>
+</nav>

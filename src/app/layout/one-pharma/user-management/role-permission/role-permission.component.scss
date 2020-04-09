@@ -1,0 +1,83 @@
+.invalid-input {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+.table-description {
+  max-width: 200px;
+}
+.w-30 {
+  width: 30%;
+}
+.esri-view {
+  height: 450px;
+}
+
+#viewDiv {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-family: verdana;
+}
+
+#topbar {
+  background: #fff;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 10px;
+}
+
+#informationbar {
+  background: #fff;
+  position: absolute;
+  top: 67px;
+  right: 15px;
+  padding: 10px;
+}
+
+.action-button {
+  font-size: 16px;
+  background-color: transparent;
+  border: 1px solid #D3D3D3;
+  color: #6e6e6e;
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+  &:hover, &:focus {
+    background: #0079c1;
+    color: #e4e4e4;
+  }
+}
+
+.active {
+  background: #0079c1;
+  color: #e4e4e4;
+}
+
+.map-block {
+  padding: 0 0 50px 0;
+}
+.submit-button {
+  text-align: right;
+}
+.submit-button button {
+  margin: 10px;
+}
+.area-type .btn-block {
+  padding: 15px 0;
+}
+.bg-color{background-color: #f1f1f1;}
+.action-buttons a{
+    margin-right: 10px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.action-buttons a:hover{
+    background: gray;
+}
+.action-buttons a:last-child{
+    margin-right: 0;
+}

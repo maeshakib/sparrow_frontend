@@ -1,0 +1,46 @@
+$topnav-background-color: #fff;
+:host {
+    .logo img {
+        width: auto;
+        height: 50px;
+    }
+    .navbar {
+        background-color: $topnav-background-color;
+        border-bottom: 1px solid rgba(0,0,0,.0625);
+        .navbar-brand {
+            color: #000;
+        }
+        .nav-item > a {
+            color: #bdbdbd;
+            &:hover {
+                color: #000;
+            }
+        }
+        .navbar-brand img{
+            width: 45%;
+        }
+    }
+    .messages {
+        width: 300px;
+        .media {
+            border-bottom: 1px solid #ddd;
+            padding: 5px 10px;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+        .media-body {
+            h5 {
+                font-size: 13px;
+                font-weight: 600;
+            }
+            .small {
+                margin: 0;
+            }
+            .last {
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+    }
+}

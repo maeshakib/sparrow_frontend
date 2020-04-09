@@ -1,0 +1,121 @@
+<div [@routerTransition]>
+    <!-- <app-page-header [heading]="'Add Role Permission'" [icon]="'fa-bar-chart-o'"></app-page-header> -->
+    <form [formGroup]="addForm" (ngSubmit)="createRolePermission(addForm.value,addForm.valid)">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card bg-color mb50">
+                    <div class="card-body">
+
+                        <div class="card-header">
+                            <div class="row">
+                                <h4 class="col-md-6"><b>Create Role</b></h4>
+                                <div class="col-md-6 text-right">
+                                    <a type="button" class="btn btn-primary" [routerLink]="['/role-permission']">List
+                                        All</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-row form-group">
+                                <label for="colFormLabelLg" class="text-right col-sm-4 col-form-label col-form-label-lg asteric_for_required_field">Role
+                                    Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" formControlName="name" class="role-name form-control form-control-lg"
+                                        placeholder="Name" [ngClass]="{ 'is-invalid': (submitted && form.name.errors) || (submitted && resErrors && resErrors['name'])}">
+                                    <div *ngIf="submitted && form.name.errors" class="invalid-feedback">
+                                        <div *ngIf="form.name.errors.required">Name is required</div>
+                                    </div>
+                                    <div *ngIf="submitted && (resErrors !== null)" class="invalid-feedback" [ngStyle]="{'display': 'block'}">
+                                        <div>{{resErrors.name}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <label for="colFormLabelLg" class="text-right col-sm-4 col-form-label col-form-label-lg asteric_for_required_field">
+                                    Description</label>
+                                <div class="col-sm-8">
+                                    <textarea type="text" formControlName="description" class="role-name form-control form-control-lg"
+                                        placeholder="Write description max for 255 character" maxlength="255" [ngClass]="{ 'is-invalid': submitted && form.description.errors }"
+                                        #yourWish></textarea>
+                                    <div class="char" [ngStyle]="{'color':yourWish.value.length >= 240 ? '#dc3545' : '#8c8c8c' }"><em>{{
+                                            255 - yourWish.value.length }} characters left</em></div>
+                                    <div *ngIf="submitted && form.description.errors" class="invalid-feedback">
+                                        <div *ngIf="form.description.errors.required">Description is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <label for="colFormLabelLg" class="text-right col-sm-4 col-form-label col-form-label-lg">
+                                    Is Deletable</label>
+                                <div class="col-sm-8 is-deletable-radio">
+                                    <input type="radio" id="is_deletable_true" class="form-control-lg" value=1
+                                        formControlName="is_deletable">
+                                    <label for="is_deletable_true" class="col-form-label col-form-label-lg">Yes</label>
+                                    <input type="radio" id="is_deletable_false" class="form-control-lg" value=0
+                                        formControlName="is_deletable">
+                                    <label for="is_deletable_false" class="col-form-label col-form-label-lg">No</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card bg-color">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4><b>Assign Permission</b></h4>
+                                    <div *ngIf="submitted && (resErrors !== null)" class="invalid-feedback" [ngStyle]="{'display': 'block'}">
+                                        <div>{{resErrors.permissions}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="selectAll($event);"
+                                            checked>
+                                        <label class="form-check-label" for="exampleCheck1">Check All</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-2 col-xs permission-block" *ngFor="let role of rolePermissions; let i=index">
+                                        <h5><b>
+                                                <input type="checkbox" class="form-check-input" id={{role.id}}
+                                                    [(ngModel)]="role.isSelect" (change)="selectRole($event,i)"
+                                                    [ngModelOptions]="{standalone: true}">
+                                                <label class="form-check-label" for={{role.id}}>{{role.name}}</label>
+                                            </b></h5>
+                                        <ul class="permission-list">
+                                            <li *ngFor="let permission of role.children; let j=index">
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id={{permission.id}}
+                                                        [(ngModel)]="permission.isSelect" (change)="selectChildren($event,i,j)"
+                                                        [ngModelOptions]="{standalone: true}">
+                                                    <label class="form-check-label" for={{permission.id}}>{{permission.name}}</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="col-md-12 text-right">
+                                <a type="button" class="btn btn-primary mr-20" [routerLink]="['/role-permission']">Cancel</a>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

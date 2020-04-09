@@ -1,0 +1,192 @@
+<div [@routerTransition]>
+    <!-- <app-page-header [heading]="'Add Role Permission'" [icon]="'fa-bar-chart-o'"></app-page-header> -->
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="card bg-color mb50">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="profile-image" style="width: 350px;">
+                                <input style="display: none;" type="file" name="fileUpload" id="fileUpload" (change)="handleFileInput($event)">
+                                <label for="fileUpload" style="display: block; margin: 0 auto;">
+                                    <div class="profile-update">
+                                        <img *ngIf="existingPhoto !== null && uploadedImageUrl === null" src="{{serverPath}}{{existingPhoto}}"
+                                            alt="" height="350" width="350" style="cursor: pointer;">
+                                        <img *ngIf='existingPhoto === null && uploadedImageUrl === null' src="assets/images/user-thumbnail.png"
+                                            alt="" height="350" width="350" style="cursor: pointer;">
+                                        <div class="dtl">
+                                            <h1 class="camera-icon"><i class="fa fa-camera"></i></h1>
+                                            <span class="upload-info">CHANGE PROFILE PHOTO</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <h4 class="col-md-10">Your Profile</h4>
+                                <button name="submit" type="submit" class="col-md-2 btn btn-primary btn-block" (click)="changeProfileView()">Edit</button>
+                                <hr>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div *ngIf='!updateProfileView else update'>
+                                        <div *ngIf='profileInfo'>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Name :</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>{{profileInfo.name}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Email :</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>{{profileInfo.email}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Mobile :</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>{{profileInfo.mobile_no}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>NID :</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>{{profileInfo.national_identification_num}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Gender :</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>{{profileInfo.gender == 1 ? 'Male': 'Female'}}</p>
+                                                 
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Join Date :</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>{{profileInfo.join_date}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Selected Role :</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>{{profileInfo.role.name}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Selected Supervisor :</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>{{profileInfo.my_manager.name}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Location Name :</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>{{profileInfo.location_area.name}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Location Level :</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>{{profileInfo.location_area.location_levels.name}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Address :</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>{{profileInfo.address}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Description :</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>{{profileInfo.description}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Status :</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <p>{{profileInfo.status == 1 ? 'Active': 'In Active'}}</p>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ng-template #update>
+                                        <form [formGroup]="updateForm" (ngSubmit)="updateProfile(updateForm.value,updateForm.valid)" *ngIf='profileInfo'>
+                                            <div class="form-group row">
+                                                <label for="username" class="col-4 col-form-label">Name* :</label>
+                                                <div class="col-8">
+                                                    <input class="form-control" formControlName="name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="email" class="col-4 col-form-label">Mobile* :</label>
+                                                <div class="col-8">
+                                                    <input class="form-control" formControlName="mobile_no" placeholder="Mobile">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="email" class="col-4 col-form-label">NID :</label>
+                                                <div class="col-8">
+                                                    <input class="form-control" formControlName="national_identification_num" placeholder="NID">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="email" class="col-4 col-form-label">Description :</label>
+                                                <div class="col-8">
+                                                    <input class="form-control" formControlName="description"
+                                                        placeholder="description">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="email" class="col-4 col-form-label">Address :</label>
+                                                <div class="col-8">
+                                                    <input class="form-control" formControlName="address" placeholder="address">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="offset-4 col-4">
+                                                    <button name="submit" type="submit" class="btn btn-primary btn-block"  [routerLink]="['/profile']" >Cancel</button>
+                                                </div>
+                                                <div class="col-4">
+                                                    <button name="submit" type="submit" class="btn btn-primary btn-block">Save</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

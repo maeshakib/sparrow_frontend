@@ -1,0 +1,188 @@
+ul.dashboard-box-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dashboard-box-list {
+    box-shadow: none;
+}
+ul.dashboard-box-list>li {
+    border-bottom: 1px solid #e4e4e4;
+    padding: 0;
+    line-height: 26px;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    flex-flow: row wrap;
+    transition: .3s;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+ul.dashboard-box-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dashboard-box .freelancer-overview {
+    padding: 15px 0;
+}
+
+.freelancer-overview {
+    
+    padding: 10px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.dashboard-box .freelancer-overview-inner {
+    flex: auto;
+    display: flex;
+    align-items: center;
+}
+
+.freelancer-overview-inner {
+    flex: 1;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+    
+}
+.dashboard-box .freelancer-overview.manage-candidates .freelancer-avatar {
+    align-self: flex-start;
+}
+
+.freelancer-overview .freelancer-avatar {
+    float:left;
+    width: 90px;
+    margin: 0 auto;
+    position: relative;
+}
+.dashboard-box .freelancer-overview .freelancer-name {
+ margin: 0 0 0 30px; 
+    float: left;
+    margin-left: 26px;
+}
+
+.freelancer-name span {
+    color: #888;
+}
+.freelancer-detail-item a, .freelancer-detail-item {
+    color: #888;
+}
+.freelancer-detail-item {
+    display: inline-block;
+    margin: 2px 10px 5px 0;
+}
+
+.dashboard-box-list .buttons-to-right.always-visible:not(.single-right-button) {
+    position: relative;
+    transform: none;
+    top: 0;
+    margin: 5px 0 10px -2px;
+    opacity: 1;
+    right: auto;
+    display: inline-block;
+    box-shadow: none;
+    width: 100%;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.dashboard-box-list .buttons-to-right.always-visible, .dashboard-box-list li:hover .buttons-to-right {
+    opacity: 1;
+}
+.margin-bottom-5 {
+    margin-bottom: 5px!important;
+}
+
+.dashboard-box-list .button {
+    padding: 6px 15px;
+    line-height: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    display: inline-block;
+    box-shadow: 0 3px 8px rgba(102,103,107,.15);
+    margin-left: 10px;
+}
+
+.freelancer-avatar{width:110px;margin:0 auto;position:relative}
+.freelancer-overview .freelancer-avatar img{width:100%;border-radius:50%;cursor:pointer}
+
+
+
+.freelancer-rating{margin-top:5px;margin-bottom:-10px}.freelancer-name h4,
+.freelancer-name h4 a{font-size:18px;font-weight:600;color:#333;cursor:pointer}
+@media all and (min-width:550px) {
+    .freelancer-name {
+        /* margin: 0 0 0 30px; */
+        float: left;
+        margin-left: 26px;
+        width: 90%;
+    }
+}
+
+@media(max-width:1600px){.freelancers-list-layout .freelancer-overview .freelancer-avatar{width:80px}
+.freelancer-name {
+    /* margin: 0 0 0 30px; */
+    float: left;
+    margin-left: 26px;
+    width: 90%;
+}
+
+}
+
+
+
+@media(max-width:1366px){.freelances-grid-layout .freelancer-overview .freelancer-avatar{width:100px}
+ .freelancer-name {
+    /* margin: 0 0 0 30px; */
+    float: left;
+    margin-left: 26px;
+    width: 90%;
+}
+
+}
+
+@media(max-width:1240px){ .freelancer-overview .freelancer-avatar{width:90px}
+
+.freelancer-name {
+    /* margin: 0 0 0 30px; */
+    float: left;
+    margin-left: 26px;
+    width: 90%;
+}
+
+}
+@media(max-width:992px){.freelancer-name {
+    /* margin: 0 0 0 30px; */
+    float: left;
+    margin-left: 26px;
+    width: 90%;
+}}
+
+
+
+@media(max-width:768px){.freelancers-list-layout .freelancer-overview .freelancer-avatar{width:80px}
+.freelancer-name {
+    /* margin: 0 0 0 30px; */
+    float: left;
+    margin-left: 26px;
+}
+
+}
+@media (min-width: 992px)
+{
+.modal-lg {
+    min-width: 1000px;
+}
+}

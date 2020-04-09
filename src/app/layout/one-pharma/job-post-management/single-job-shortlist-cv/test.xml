@@ -1,0 +1,88 @@
+<fetch no-lock="true">
+  <entity name="progres_individual">
+    <attribute name="progres_id" alias="ApplicantID" />
+    <attribute name="progres_relationshiptofp" />
+    <attribute name="progres_placeofbirthcity" />
+    <filter type="and">
+      <condition attribute="progres_individualid" operator="eq" value="5634cb00-a731-e911-8113-00155d33ae0c" />
+    </filter>
+    <link-entity name="progres_individual" from="progres_registrationgroupid" to="progres_registrationgroupid" link-type="inner" alias="Individuals">
+      <attribute name="progres_arrivaldate" />
+      <attribute name="progres_individualid" />
+      <attribute name="progres_countryoforiginid" />
+      <attribute name="progres_relationshiptofp" />
+      <attribute name="progres_originalalphabetname" />
+      <attribute name="progres_dateofbirth" />
+      <attribute name="progres_concatenatedname" />
+      <attribute name="progres_registrationgroupid" alias="RegGroupID" />
+      <attribute name="progres_registrationdate" />
+      <attribute name="progres_id" alias="IndividualID" />
+      <attribute name="progres_sex" />
+      <filter type="and">
+        <condition attribute="progres_refugeestatus" operator="eq" value="125080005" />
+        <filter type="or">
+          <condition attribute="statuscode" operator="eq" value="1" />
+          <condition attribute="statuscode" operator="eq" value="125080000" />
+        </filter>
+      </filter>
+      <order attribute="progres_sequencenumber" />
+     
+      <link-entity name="progres_photo" from="progres_individual" to="progres_individualid" link-type="outer">
+        <link-entity name="annotation" from="objectid" to="progres_photoid" link-type="outer">
+          <attribute name="documentbody" alias="Photo" />
+        </link-entity>
+      </link-entity>
+     
+    </link-entity>
+  </entity>
+</fetch>
+
+ID CARD DIMENSIONS IN INCHES
+CR80: The standard, most popular ID card size is 3.375″ x 2.125″. 
+The CR80 card is also the same size as a credit card.
+
+CR79: Slightly smaller than a standard size card, the CR79 card is 3.303″ x 2.051″.
+ CR79 cards typically have an adhesive back and are commonly used for printing and adhering to a clamshell proximity card. Not all card printers are capable of printing on a CR79 card.
+
+CR100: The CR100 card is 42% larger than a standard card, measuring 3.88″ x 2.63″. 
+Often called “oversize” or “military-size” cards, CR100 cards are designed to be easy to see from a distance. Very few card printers are capable of printing on a CR100 card.
+
+<fetch top="50" >
+  <entity name="progres_individual" >
+    <attribute name="progres_familyname" />
+    <attribute name="progres_countryoforiginid" />
+    <attribute name="progres_dateofbirth" />
+    <attribute name="progres_sex" />
+    <attribute name="progres_fathersname" />
+    <attribute name="progres_mothersname" />
+    <filter>
+      <condition attribute="progres_indvidualid" operator="eq" value="194-00001382" />
+    </filter>
+    <link-entity name="progres_registrationgroup" from="progres_registrationgroupid" to="progres_registrationgroupid" link-type="inner" >
+      <attribute name="progres_registrationgroupbusinessid" />
+    </link-entity>
+    <link-entity name="progres_photo" from="progres_individual" to="progres_individualid" link-type="outer" >
+      <link-entity name="annotation" from="objectid" to="progres_photoid" link-type="outer" >
+        <attribute name="documentbody" />
+      </link-entity>
+    </link-entity>
+  </entity>
+</fetch>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

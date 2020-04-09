@@ -1,0 +1,91 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-12">
+      
+        <div class="card bg-color"  >
+            <div class="card-body">
+                <div class="card-header">
+                    <div class="row">
+                        <h4 class="col-md-3">{{singleJobs?.job_title}}</h4>
+                        <div class="col-md-3" >
+                          <div *ngIf="userEmail">
+                            <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/resume']">Appply Now</button>
+
+                          </div>
+                          <div *ngIf="!userEmail">
+                            <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/login']">Appply Now</button>
+
+                          </div>
+                        </div>
+
+                        <div class="col-md-6 text-right">
+                       
+                        </div>
+                    </div>
+                </div>
+                <table class="card-body table table-hover">
+            
+                    <tbody>
+                        <tr >
+                            <td >Job Title:	</td>
+                            <td>	{{singleJobs?.job_title}}</td>
+                            <td >Vacancy Notice:	</td>
+                            
+                            <td>{{singleJobs?.vacancy_notice}}	</td>
+                            <td>Position Number	</td>
+                            <td >                              
+                              {{singleJobs?.postition_number}}
+
+                          </td>
+                        </tr>
+                        <tr >
+                          <td >Location:		</td>
+                          <td>{{singleJobs?.location}}	</td>
+                          <td >Position Grade:		</td>
+                          
+                          <td>{{singleJobs?.position_grade}}	</td>
+                          <td>Closing Date:	</td>
+                          <td >                              
+                            {{singleJobs?.closing_date}} 
+
+
+                        </td>
+                      </tr>
+                      <tr >
+                        <td colspan="6">Organizational Context :		</td>
+                      </tr>
+                      <tr >
+                        <td colspan="6">
+                          <p>
+                            {{singleJobs?.organizational_context}} 
+                        </p>
+                      </td>
+                       
+                    </tr>
+
+                    <tr >
+                      <td  colspan="6">Responsibilities
+
+                        :		</td>
+                      </tr>
+                      <tr>
+                      <td  colspan="6">
+                        <p>
+                          {{singleJobs?.responsibilities}} 
+
+                      </p>
+                    </td>
+                     
+                  </tr>
+
+                      
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- /.row -->
+
+</div>

@@ -1,0 +1,407 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Create User'" [icon]="'fa-bar-chart-o'"></app-page-header>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card bg-color">
+                <div class="card-body">
+                    <form [formGroup]="addForm" (ngSubmit)="createUser(addForm.value,addForm.valid)">
+                        <div class="card-header">
+                            <div class="row">
+                                <h4 class="col-md-6"><b>Create User</b></h4>
+                                <div class="col-md-6 text-right">
+                                    <a type="button" class="btn btn-primary" [routerLink]="['/user-management']">List
+                                        All</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row justify-content-center">
+                                <div class="col-md-5">
+                                    <div class="form-row form-group">
+                                        <label class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field"
+                                            for="colFormLabelLg">
+                                            Name </label>
+                                        <div class="col-md-8">
+                                            <input formControlName='name' class="form-control form-control-lg"
+                                                placeholder="Name" type="text" [ngClass]="{ 'is-invalid': submitted && form.name.errors }">
+                                            <div *ngIf="submitted && form.name.errors" class="invalid-feedback">
+                                                <div *ngIf="form.name.errors.required">Name is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label class="col-md-3 col-form-label col-form-label-lg asteric_for_required_field"
+                                            for="colFormLabelLg">Email
+                                        </label>
+                                        <div class="col-md-8">
+                                            <input formControlName='email' class="form-control form-control-lg"
+                                                placeholder="email" type="text" [ngClass]="{ 'is-invalid': submitted && form.email.errors }">
+                                            <div *ngIf="submitted && form.email.errors" class="invalid-feedback">
+                                                <div *ngIf="form.email.errors.required">Email is required</div>
+                                                <div *ngIf="form.email.errors.email">Email must be a valid email
+                                                    address</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field"
+                                            for="colFormLabelLg">
+                                            Password </label>
+                                        <div class="col-md-8">
+                                            <input formControlName='password' class="form-control form-control-lg"
+                                                placeholder="password" type="password" [ngClass]="{ 'is-invalid': submitted && form.password.errors }">
+                                            <div *ngIf="submitted && form.password.errors" class="invalid-feedback">
+                                                <div *ngIf="form.password.errors.required">Password is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label class="col-md-3 col-form-label col-form-label-lg asteric_for_required_field"
+                                            for="colFormLabelLg">Retype
+                                            Password
+                                        </label>
+                                        <div class="col-md-8">
+                                            <input formControlName='retype_password' class="form-control form-control-lg"
+                                                placeholder="retype password" type="password" [ngClass]="{ 'is-invalid': submitted && form.retype_password.errors }">
+                                            <div *ngIf="submitted && form.retype_password.errors" class="invalid-feedback">
+                                                <div *ngIf="form.retype_password.errors.required">Retype Password is
+                                                    required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field"
+                                            for="colFormLabelLg">
+                                            Mobile </label>
+                                        <div class="col-md-8">
+                                            <input formControlName='mobile_no' class="form-control form-control-lg"
+                                                placeholder="11 digits mobile no." type="text" [ngClass]="{ 'is-invalid': submitted && form.mobile_no.errors }">
+                                            <div *ngIf="submitted && form.mobile_no.errors" class="invalid-feedback">
+                                                <div *ngIf="form.mobile_no.errors.required">Mobile is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label class="col-sm-3 col-form-label col-form-label-lg" for="colFormLabelLg">
+                                            NID </label>
+                                        <div class="col-md-8">
+                                            <input formControlName='national_identification_num' class="form-control form-control-lg"
+                                                placeholder="NID" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label class="col-md-3 col-form-label col-form-label-lg" for="colFormLabelLg">Gender
+                                        </label>
+                                        <div class="col-md-8">
+                                            <div class="form-row form-group">
+                                                <div class="gender-radio-button">
+                                                    <input type="radio" id="gender_male" class="form-control-lg" value=1
+                                                        formControlName="gender" selected="selected">
+                                                    <label for="gender_male" class="col-form-label col-form-label-lg">Male</label>
+                                                    <input type="radio" id="gender_female" class="form-control-lg"
+                                                        value=0 formControlName="gender">
+                                                    <label for="gender_female" class="col-form-label col-form-label-lg">Female</label>
+                                                    <input type="radio" id="gender_third" class="form-control-lg" value=2
+                                                        formControlName="gender">
+                                                    <label for="gender_third" class="col-form-label col-form-label-lg">Third</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label class="col-md-3 col-form-label col-form-label-lg" for="colFormLabelLg">Is he supervisor?
+                                        </label>
+                                        <div class="col-md-8">
+                                            <div class="form-row form-group">
+                                                <div class="is_supervisor-radio-button">
+                                                    <input type="radio" id="is_supervisor_yes" class="form-control-lg" value=1
+                                                        formControlName="is_supervisor">
+                                                    <label for="is_supervisor_yes" class="col-form-label col-form-label-lg">Yes</label>
+                                                    <input type="radio" id="is_supervisor_no" class="form-control-lg"
+                                                        value=0 formControlName="is_supervisor">
+                                                    <label for="is_supervisor_no" class="col-form-label col-form-label-lg">No</label>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-row form-group">
+                                        <label class="col-md-3 col-form-label col-form-label-lg asteric_for_required_field"
+                                            for="colFormLabelLg">Joining Date
+                                        </label>
+                                        <div class="col-md-8">
+                                            <div class="input-group datepicker-input">
+                                                <input class="form-control form-control-lg" formControlName='join_date'
+                                                    placeholder="yyyy-mm-dd" name="start" ngbDatepicker #start="ngbDatepicker">
+                                                <button class="input-group-addon" (click)="start.toggle()" type="button">
+                                                    <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                                                    <span class="fa fa-calendar"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field">Select
+                                            Role</label>
+                                        <div class="col-md-8">
+                                            <select class="form-control form-control-lg" formControlName="role_id"
+                                                [ngClass]="{ 'is-invalid': submitted && form.role_id.errors }">
+                                                <option *ngFor="let role of allRole" value={{role.id}}>{{role.name}}</option>
+
+                                            </select>
+                                            <div *ngIf="submitted && form.role_id.errors" class="invalid-feedback">
+                                                <div *ngIf="form.role_id.errors.required">Role required</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field">Select
+                                            Supervisor</label>
+                                        <div class="col-md-8">
+                                            <select class="form-control form-control-lg" formControlName="supervisor_id"
+                                                [ngClass]="{ 'is-invalid': submitted && form.supervisor_id.errors }">
+                                                <option *ngFor="let user of allSupervisors" value={{user.id}}>{{user.name}}, {{user.designation.name}}, {{user.department.name }}</option>
+                                            </select>
+                                            <div *ngIf="submitted && form.supervisor_id.errors" class="invalid-feedback">
+                                                <div *ngIf="form.supervisor_id.errors.required">Supervisor required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field">Select
+                                            Department</label>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <input class="form-control form-control-lg" [disabled]='true'
+                                                    placeholder="Department" type="text" value={{lastSelectedDepartment}}
+                                                    [ngClass]="{ 'is-invalid': submitted && form.department_id.errors }">
+                                                <div class="input-group-append pointer" (click)='departmentModal(showDepartmentModal)'>
+                                                    <span class="input-group-text input-icon" id="basic-addon2">
+                                                        <span style="font-size: 1.3em; color: Tomato;">
+                                                            <i class="fas fa-address-card"></i></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="submitted && form.department_id.errors" class="invalid-feedback">
+                                                <div *ngIf="form.department_id.errors.required">Department required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg ">Select
+                                            Depot</label>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <input class="form-control form-control-lg" [disabled]='true'
+                                                    placeholder="Depot" type="text" value={{lastSelectedDepot}}
+                                                    [ngClass]="{ 'is-invalid': submitted && form.depot_id.errors }">
+                                                <div class="input-group-append pointer" (click)='depotModal(showDepotModal)'>
+                                                    <span class="input-group-text input-icon" id="basic-addon2">
+                                                        <span style="font-size: 1.3em; color: Tomato;">
+                                                            <i class="fas fa-address-card"></i></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field">Select
+                                            Designation</label>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <input class="form-control form-control-lg" [disabled]='true'
+                                                    placeholder="Designation" type="text" value={{lastSelectedDesignation}}
+                                                    [ngClass]="{ 'is-invalid': submitted && form.name.errors }">
+                                                <div class="input-group-append pointer" (click)='designationModal(showDesignationModal)'>
+                                                    <span class="input-group-text input-icon" id="basic-addon2">
+                                                        <span style="font-size: 1.3em; color: Tomato;">
+                                                            <i class="fas fa-address-card"></i></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="submitted && form.designation_id.errors" class="invalid-feedback">
+                                                <div *ngIf="form.designation_id.errors.required">Designation required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group">
+                                        <label class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field"
+                                            for="colFormLabelLg">
+                                            Select Location </label>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <input class="form-control form-control-lg" [disabled]='true'
+                                                    placeholder="Location" type="text" value={{lastSelectedLocationName}}
+                                                    [ngClass]="{ 'is-invalid': submitted && form.location_area_id.errors }">
+                                                <div class="input-group-append pointer" (click)='locationModal(showLocationModal)'>
+                                                    <span class="input-group-text input-icon" id="basic-addon2">
+                                                        <span style="font-size: 1.5em; color: Tomato;">
+                                                            <i class="fas fa-map-marker-alt"></i></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="submitted && form.location_area_id.errors" class="invalid-feedback">
+                                                <div *ngIf="form.location_area_id.errors.required">Location is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-10">
+                                    <div class="form-row form-group adjust-input-field">
+                                        <label for="colFormLabelLg" class="col-form-label col-form-label-lg">Image</label>
+                                        <!-- <input type="file" class="form-control form-control-lg" placeholder="image"
+                                            (change)="handleFileInput($event.target.files)"> -->
+
+
+                                        <div class="profile-image" style="width: 200px;">
+                                            <input style="display: none;" type="file" name="fileUpload" id="fileUpload"
+                                                (change)="handleFileInput($event)">
+                                            <label for="fileUpload" style="display: block; margin: 0 auto;">
+                                                <div class="profile-update">
+                                                    <img *ngIf="uploadedImageUrl !== null" [src]="uploadedImageUrl" alt="" height="200"
+                                                        width="200" style="cursor: pointer;">
+                                                    <img *ngIf='uploadedImageUrl === null' src="assets/images/user-thumbnail.png"
+                                                        alt="" height="200" width="200" style="cursor: pointer;">
+                                                    <div class="dtl">
+                                                        <h1 class="camera-icon"><i class="fa fa-camera"></i></h1>
+                                                        <span class="upload-info">CHANGE PROFILE PHOTO</span>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-group adjust-input-field">
+                                        <label class="col-form-label col-form-label-lg" for="colFormLabelLg">
+                                            Address </label>
+                                        <textarea formControlName="address" class="form-control form-control-lg" rows="3"
+                                            placeholder="address" type="text"></textarea>
+                                    </div>
+                                    <div class="form-row form-group adjust-input-field">
+                                        <label for="colFormLabelLg" class="col-form-label col-form-label-lg">Description</label>
+                                        <textarea formControlName="description" class="form-control form-control-lg"
+                                            rows="3" placeholder="description max 600 characters" type="text"></textarea>
+                                    </div>
+                                    <div class="form-row form-group adjust-input-field">
+                                        <label for="colFormLabelLg" class="col-form-label col-form-label-lg">Status</label>
+                                        <div class="form-row form-group">
+                                            <div class="gender-radio-button">
+                                                <input type="radio" id="status_active" class="form-control-lg" value=1
+                                                    formControlName="status" >
+                                                <label for="status_active" class="col-form-label col-form-label-lg">Active</label>
+                                                <input type="radio" id="status_inactive" class="form-control-lg" value=0
+                                                    formControlName="status">
+                                                <label for="status_inactive" class="col-form-label col-form-label-lg">Inactive</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="submit-button form-row form-group justify-content-end">
+                                        <a type="button" class="btn btn-secondary" [routerLink]="['/user-management']">Cancel</a>
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal goes here -->
+<ng-template #showLocationModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Select Location Here</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" id="location-modal-body">
+        <div class="form-row form-group" *ngFor="let location of allLocation; let i=index">
+            <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg">Select
+                {{location.name}}</label>
+            <div class="col-md-9">
+                <select class="form-control form-control-lg" (change)='getLocationLevelId($event,i)'>
+                    <option value="">Pick a {{location.name}}</option>
+                    <option *ngFor="let level of location.loclist" label={{level.name}} value={{level.id}}>{{level.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="confirmAddLocation()">Okay</button>
+    </div>
+</ng-template>
+
+
+
+<ng-template #showDepartmentModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Select Department Here</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" id="department-modal-body">
+        <select class="form-control form-control-lg" (change)='getDepartmentName($event)' [ngClass]="{ 'is-invalid': submitted && form.designation_id.errors }">
+            <option value="">Pick a Department</option>
+            <option *ngFor="let department of allDepartment" value={{department.id}}>{{department.name}}</option>
+        </select>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="confirmAddDepartment()">Okay</button>
+    </div>
+</ng-template>
+
+
+
+
+
+
+
+<ng-template #showDesignationModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Select Designation Here</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" id="designation-modal-body">
+        <select class="form-control form-control-lg" (change)='getDesignationName($event)' [ngClass]="{ 'is-invalid': submitted && form.designation_id.errors }">
+            <option value="">Pick a Designation</option>
+            <option *ngFor="let designation of allDesignation" value={{designation.id}}>{{designation.name}}</option>
+        </select>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="confirmAddDesignation()">Okay</button>
+    </div>
+</ng-template>
+
+
+<ng-template #showDepotModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Select Depot Here</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" id="department-modal-body">
+        <select class="form-control form-control-lg" (change)='getDepotName($event)' [ngClass]="{ 'is-invalid': submitted && form.designation_id.errors }">
+            <option value="">Pick a Depot</option>
+            <option *ngFor="let department of allDepot" value={{department.id}}>{{department.name}}</option>
+        </select>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="confirmAddDepot()">Okay</button>
+    </div>
+</ng-template>

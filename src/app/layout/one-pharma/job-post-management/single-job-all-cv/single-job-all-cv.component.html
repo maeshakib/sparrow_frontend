@@ -1,0 +1,97 @@
+<div [@routerTransition]>
+  <app-page-header [heading]="'Manage Candidate'" [icon]="'fa-bar-chart-o'"></app-page-header>
+  <div class="row">
+    <div class="col-md-12">
+      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="query" id="listSearch">
+
+      <div class="content">
+        <ul class="dashboard-box-list">
+          <li *ngFor="let allCv of SingleJobsAllCv | LockFilter: query">
+            <!-- Overview -->
+            <div class="freelancer-overview manage-candidates">
+              <div class="freelancer-overview-inner">
+
+                <!-- Name -->
+                <div class="row">
+                  <div class="col-md-1">
+                    <!-- Avatar -->
+                    <div class="freelancer-avatar">
+
+                      <img src="{{serverPath}}{{allCv.photo}}" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+
+                    <!-- Name -->
+                    <div class="freelancer-name">
+                      <h4><a href="#">{{allCv.first_name}} {{allCv.middle_name}} {{allCv.last_name}}<img class="flag"
+                            src="images/flags/au.svg" alt="" data-tippy-placement="top" data-tippy=""
+                            data-original-title="Australia"></a></h4>
+
+                      <!-- Details -->
+                      <span class="freelancer-detail-item"><i class="fa fa-envelope"
+                          style="margin-right: 10px;"></i>{{allCv.email}}</span>
+                      <span class="freelancer-detail-item"><i class="fa fa-phone "
+                          style="margin-right: 10px;"></i>{{allCv.mobile_no}}</span>
+
+                      <!-- Rating -->
+                      <div class="freelancer-rating">
+                        <div class="star-rating" data-rating="5.0"><span class="star"></span><span
+                            class="star"></span><span class="star"></span><span class="star"></span><span
+                            class="star"></span></div>
+                      </div>
+
+                      <!-- Buttons -->
+                      <div class="buttons-to-right always-visible margin-top-25 margin-bottom-5">
+                        <a href="assets/images/{{allCv.p11form}}" class="btn btn-info"><i
+                            class="icon-feather-file-text"></i> Download
+                          P11 Form</a>
+
+                        <button class=" btn btn-success" style="margin-left: 10px;"
+                          (click)='shortListUserModal(shortListUser,allCv.jobeeker_user_id,allCv.job_post_id)'>shortlist</button>
+
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-3">
+
+                    <!-- Name -->
+                    <div class="freelancer-name">
+                      <h4>Work Experience</h4>
+                      <h6>{{allCv.work_duration}}</h6>
+
+                    </div>
+                  </div>
+
+
+                </div>
+
+              </div>
+            </div>
+          </li>
+
+
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ng-template #shortListUser let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Shortlist User</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to Select this user ?</p>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="shortListUserFunction()">Confirm</button>
+    </div>
+  </ng-template>
+</div>

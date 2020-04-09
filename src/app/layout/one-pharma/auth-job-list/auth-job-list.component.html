@@ -1,0 +1,45 @@
+<div [@routerTransition]>
+  <app-page-header [heading]="'Job Board'" [icon]="'fa-bar-chart-o'"></app-page-header>
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="card" *ngFor="let job of allJobs; let i=index">
+       
+        <div class="card-body">
+  
+          
+  
+          <div class="row single_job_div" >
+  
+            <div class="col-sm-12">
+           <a [routerLink]="['/auth-job-details', job.id]"><h5 >{{job.job_title}}</h5></a>
+  
+          </div>
+            <div class="col-sm-6">
+              <p class="card-text" >Vacancy Notice Number: {{job.vacancy_notice}}</p>
+            </div>
+            <div class="col-sm-3">
+              <p> {{job.location}}</p>
+            </div>
+          <div class="col-sm-3">        
+            <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/auth-job-details', job.id]">Appply Now</button>
+  
+            </div>
+  
+        </div>
+  
+  
+  
+          
+        </div>
+      </div> <!-- end card-->
+  
+      
+  
+  
+  
+  </div>
+  </div>
+ 
+
+</div>

@@ -1,0 +1,77 @@
+<div [@routerTransition]>
+    <!-- <app-page-header [heading]="'Role Permission'" [icon]="'fa-bar-chart-o'"></app-page-header> -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card bg-color">
+                <div class="card-body">
+                    <div class="card-header">
+                        <div class="row">
+                            <h4 class="col-md-6">Role List</h4>
+                            <div class="col-md-6 text-right">
+                                <button type="button" class="btn btn-primary" [routerLink]="['/add-role-permission']">Create</button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="card-body table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Role Name</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Created at</th>
+                                <th>Updated at</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let role of allRoles; let i=index">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{role.name}}</td>
+                                <td class="table-description">{{(role.description.length>160)? (role.description |
+                                    slice:0:160)+'..':(role.description)}}</td>
+                                <td>
+                                    <span *ngFor='let status of roleStatus'>
+                                        <span *ngIf='role.status == status.id'>{{status.name}}</span>
+                                    </span>
+                                </td>
+                                <td>{{role.created_at | date:'mediumDate'}}</td>
+                                <td>{{role.updated_at | date:'mediumDate'}}</td>
+                                <td class="action-buttons">
+                                    <a class="btn" [routerLink]="['/update-role-permission/',role.id]"><i class="fas fa-pencil-alt"></i></a>
+                                    <button *ngIf='role.is_deletable == 1' class="btn" (click)='deleteModal(delete, role.id)'><i
+                                            class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #delete let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title">Delete Role</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure?</p>
+            <p>Select a role to replace existing users</p>
+            <div class="role-list">
+                <select class="form-control form-control-lg" (change)='replaceableRole($event)'>
+                    <option value="">Pick a Role</option>
+                    <option *ngFor="let role of allRolesFD;" value={{role.id}}>{{role.name}}</option>
+                </select>
+                <div *ngIf="resError !== null" class="invalid-input">
+                    <div>{{resError.role_id}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="deleteRolePermission('Close click')">Confirm</button>
+        </div>
+    </ng-template>
+</div>

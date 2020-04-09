@@ -1,0 +1,112 @@
+
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4" id="formContent" style="color:#000">
+            <div class="card bg-color">
+                <div class="card-header" style="text-align: center;">
+                    <h1>UNHCR,Coxsbazar Dashboard</h1>
+                </div>
+                <div class="card-body">
+
+
+
+
+                      
+            <form [formGroup]="registrationForm" (ngSubmit)="UserRegistration(registrationForm.value,registrationForm.valid)">
+                <div class="form-content">
+                    <div class="form-row form-group">
+                        <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg asteric_for_required_field">Name</label>
+                        <div class="col-sm-8">
+                        <input type="text" formControlName="Name" class="form-control form-control-lg" placeholder="Name" 
+                        [ngClass]="{ 'is-invalid': submitted && registrationform.Name.errors }"
+                        >
+                        <div *ngIf="submitted && registrationform.Name.errors" class="invalid-feedback">
+                            <div *ngIf="registrationform.Name.errors.required"> Name required</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="form-row form-group">
+                        <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg asteric_for_required_field">Email</label>
+                        <div class="col-sm-8">
+                            <input type="text" formControlName="Email" class="form-control form-control-lg" placeholder="Email"
+                            [ngClass]="{ 'is-invalid': submitted && registrationform.Email.errors }"
+                            >
+                            <div *ngIf="submitted && registrationform.Email.errors" class="invalid-feedback">
+                                <div *ngIf="registrationform.Email.errors.required"> Email required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row form-group">
+                        <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg asteric_for_required_field">Mobile</label>
+                        <div class="col-sm-8">
+                            <input type="text" formControlName="mobile_no" class="form-control form-control-lg" placeholder="Mobile"
+                            [ngClass]="{ 'is-invalid': submitted && registrationform.mobile_no.errors }"
+                            >
+                            <div *ngIf="submitted && registrationform.mobile_no.errors" class="invalid-feedback">
+                                <div *ngIf="registrationform.mobile_no.errors.required"> Mobile required</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row form-group">
+                        <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg asteric_for_required_field">Gender</label>
+                        <div class="col-sm-8">
+                            <div class="form-row form-group">
+                                <div class="gender-radio-button">
+                                    <input type="radio" id="gender_male" class="form-control-lg" value=1
+                                        formControlName="gender" selected="selected">
+                                    <label for="gender_male" class="col-form-label col-form-label-lg">Male</label>
+                                    <input type="radio" id="gender_female" class="form-control-lg"
+                                        value=0 formControlName="gender">
+                                    <label for="gender_female" class="col-form-label col-form-label-lg">Female</label>
+                                    <input type="radio" id="gender_third" class="form-control-lg" value=2
+                                        formControlName="gender">
+                                    <label for="gender_third" class="col-form-label col-form-label-lg">Third</label>
+                                </div>
+                                <div *ngIf="submitted && registrationform.gender.errors" class="invalid-feedback">
+                                    <div *ngIf="registrationform.gender.errors.required"> gender required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row form-group">
+                        <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg asteric_for_required_field">Password</label>
+                        <div class="col-sm-8">
+                            <input type="password" formControlName="Password" class="form-control form-control-lg" placeholder="Password"
+                            [ngClass]="{ 'is-invalid': submitted && registrationform.Password.errors }"
+                            >
+                            <div *ngIf="submitted && registrationform.Password.errors" class="invalid-feedback">
+                                <div *ngIf="registrationform.Password.errors.required"> Password required</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row form-group">
+                        <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg asteric_for_required_field"> RepeatPassword</label>
+                        <div class="col-sm-8">
+                            <input type="password" formControlName="RepeatPassword" class="form-control form-control-lg" placeholder="Repeat Password"
+                            [ngClass]="{ 'is-invalid': submitted && registrationform.RepeatPassword.errors }"
+                            >
+                            <div *ngIf="submitted && registrationform.RepeatPassword.errors" class="invalid-feedback">
+                                <div *ngIf="registrationform.RepeatPassword.errors.required"> RepeatPassword required</div>
+                            </div>
+                        </div>
+                    </div>
+
+                 
+                </div>
+                <button type="submit" class="btn rounded-btn"> Register </button>&nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
+            </form>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

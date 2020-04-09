@@ -1,0 +1,136 @@
+
+
+<div
+ [@routerTransition]>
+  <app-page-header [heading]="'Job Board'" [icon]="'fa-bar-chart-o'"></app-page-header>
+  
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        
+          <div class="card bg-color"  >
+              <div class="card-body">
+                  <div class="card-header">
+                      <div class="row">
+                          <h4 class="col-md-3">{{singleJobs?.job_title}}</h4>
+                          <div class="col-md-3" >
+                            <button type="button" class="btn btn-primary btn-sm" (click)='createModal(create)'>Appply Now</button>
+
+                            
+                          </div>
+  
+                          <div class="col-md-6 text-right">
+                         
+                          </div>
+                      </div>
+                  </div>
+                  <table class="card-body table table-hover">
+              
+                      <tbody>
+                          <tr >
+                              <td >Job Title:	</td>
+                              <td>	{{singleJobs?.job_title}}</td>
+                              <td >Vacancy Notice:	</td>
+                              
+                              <td>{{singleJobs?.vacancy_notice}}	</td>
+                              <td>Position Number	</td>
+                              <td >                              
+                                {{singleJobs?.postition_number}}
+  
+                            </td>
+                          </tr>
+                          <tr >
+                            <td >Location:		</td>
+                            <td>{{singleJobs?.location}}	</td>
+                            <td >Position Grade:		</td>
+                            
+                            <td>{{singleJobs?.position_grade}}	</td>
+                            <td>Closing Date:	</td>
+                            <td >                              
+                              {{singleJobs?.closing_date}} 
+  
+  
+                          </td>
+                        </tr>
+                        <tr >
+                          <td colspan="6">Organizational Context :		</td>
+                        </tr>
+                        <tr >
+                          <td colspan="6">
+                            <p>
+                              {{singleJobs?.organizational_context}} 
+                          </p>
+                        </td>
+                         
+                      </tr>
+  
+                      <tr >
+                        <td  colspan="6">Responsibilities
+  
+                          :		</td>
+                        </tr>
+                        <tr>
+                        <td  colspan="6">
+                          <p>
+                            {{singleJobs?.responsibilities}} 
+  
+                        </p>
+                      </td>
+                       
+                    </tr>
+  
+                        
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+    <!-- /.row -->
+  
+  </div>
+
+</div>
+
+
+<ng-template #create let-c="close" let-d="dismiss">
+  <div class="modal-header">
+      <h4 class="modal-title">Submit application online</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <form [formGroup]="addForm" (ngSubmit)="UserJobApply(addForm.value,addForm.valid)">
+
+          <div class="form-row form-group">
+              <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg ">Account Name
+              </label>
+              <div class="col-sm-8">
+  
+              {{userEmail}}
+                  
+              </div>
+          </div>
+
+          <div class="form-row form-group">
+              <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg ">Position Applied
+              </label>
+              <div class="col-sm-8">
+                 
+                {{singleJobs.job_title}}
+
+             
+              </div>
+          </div>
+
+  
+
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" type="reset">Close</button>
+              <button type="submit" class="btn btn-primary">Apply</button>
+          </div>
+      </form>
+  </div>
+</ng-template>

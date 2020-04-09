@@ -1,0 +1,78 @@
+.image-block h4 {
+    display: inline-block;
+    padding-right: 20px;
+}
+.image-block .thumb-img{
+    width: 25%;
+}
+.description {
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.select_box {
+    width: 35%;
+    margin-left: 7px;
+}
+.pd-20 {
+    padding: 20px;
+}
+.card-body {
+    padding: 0;
+}
+.action-buttons button{
+    margin-right: 10px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.action-buttons button:hover{
+    background: gray;
+}
+.action-buttons button:last-child{
+    margin-right: 0;
+}
+.radio {
+    margin-top: 12px;
+}
+.radio input[type="radio"]:checked + .radio-label:before {
+    margin-top: 5px;
+}
+.radio input[type="radio"] + .radio-label:before {
+    margin-top: 5px;
+}
+.card-header button {
+    margin-right: 20px;
+}
+.card-header button:last-child {
+    margin-right: 0;
+}
+
+/* body select.select_box */ 
+.filter-block select { 
+    display: block;
+    padding: 10px 70px 10px 13px !important; 
+    max-width: 100%; 
+    height: auto !important; 
+    border: 1px solid #e3e3e3; 
+    border-radius: 3px; 
+    background-color: DodgerBlue; 
+    color: #FFFFFF; 
+    font-size: 12px; 
+    line-height: 16px !important; 
+    appearance: none; 
+    /* this is must */ -webkit-appearance: none; 
+    -moz-appearance: none;
+    margin: 0 auto;
+} 
+/* body select.select_box option */ 
+.filter-block select option { 
+    padding: 10px 70px 10px 13px;
+    border-bottom: 1px solid #fff;
+} 
+/* for IE and Edge */ 
+select::-ms-expand { 
+    display: none; 
+} 
+select:disabled::-ms-expand { 
+    background: #f60; 
+}

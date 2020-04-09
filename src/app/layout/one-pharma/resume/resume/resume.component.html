@@ -1,0 +1,1723 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Create Resume'" [icon]="'fa-bar-chart-o'"></app-page-header>
+
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <button class="accordion">
+                Personal Details
+            </button>
+
+            <div class="panel">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+
+
+                            <div class="col-sm-12 margin_btm">
+                                <div class="card bg-color">
+                                    <div class="card-body">
+                                        <div class="card-header">
+                                            <div class="row">
+
+
+                                                <div class="col-sm-6">
+                                                    <button class="btn" class="btn btn-primary"
+                                                        (click)='editPersonalDetails(updatePersonalDetails,personalDetails?.id)'>Edit</button><span
+                                                        style="margin-right:10px;"></span>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <table class="card-body table table-hover">
+
+                                            <tbody>
+
+                                                <tr>
+                                                    <td style="width:10%" class="profile_tbltrtd"> Name</td>
+                                                    <td>{{personalDetails?.first_name}} {{personalDetails?.middle_name}}
+                                                        {{personalDetails?.last_name}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="profile_tbltrtd"> Email</td>
+                                                    <td>{{personalDetails?.email}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="profile_tbltrtd">Mobile No</td>
+                                                    <td>{{personalDetails?.mobile_no}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="profile_tbltrtd">nationalities at birth</td>
+                                                    <td>{{personalDetails?.nationalities_at_birth}}</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="profile_tbltrtd">Marital Status</td>
+                                                    <td>{{personalDetails?.marital_status}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- <button type="button" class="btn btn-primary" (click)='createModal(create_PersonalDetails)'>Create</button> -->
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <!-- 
+<div class="row">
+    <div class="col-sm-12">
+        
+      <button class="accordion">
+             Address Details
+      </button>
+
+    <div class="panel">
+      <div class="card">
+        <div class="card-body">
+          <div class="row" *ngFor="let ref of allWorkExperiences; let i=index">
+        
+        
+              <div class="col-sm-12">
+                    <div class="card bg-color">
+                        <div class="card-body">
+                            <div class="card-header">
+                                <div class="row">
+                                  
+                                    <div class="col-sm-6">
+                                        <h4 class="col-md-6"> Address Details</h4>
+                                    </div>
+                                    <div class="col-sm-6">
+                                    <button class="btn" (click)='editWorkExperienceModal(updateWorkExperience,ref.id)'>Edit</button><span style="margin-right:10px;"></span>
+                                    <button class="btn" >Delete</button>
+          
+                                  </div>
+                                </div>
+                            </div>
+                            <table class="card-body table table-hover">
+                              
+                                <tbody>
+          
+                                    <tr >               
+                                        <td style="width:30%">Employer Name</td>
+                                        <td >{{ref.employer_name}}</td>                       
+                                    </tr>
+                                    <tr >               
+                                        <td>Job Title</td>
+                                        <td >{{ref.job_title}}</td>                       
+                                    </tr>
+                                                            
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+          
+          
+            </div>
+       
+
+          
+          <button type="button" class="btn btn-primary" (click)='createModal(create_WorkExperience)'>Create</button>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <button class="accordion">
+                Work Experience
+            </button>
+
+            <div class="panel">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row" *ngFor="let ref of allWorkExperiences; let i=index">
+
+
+                            <div class="col-sm-12">
+                                <div class="card bg-color">
+                                    <div class="card-body">
+                                        <div class="card-header">
+                                            <div class="row">
+
+                                                <div class="col-sm-6">
+                                                    <h4 class="col-md-6">Work Experience {{i+1}}</h4>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <button class="btn btn-primary"
+                                                        (click)='editWorkExperienceModal(updateWorkExperience,ref.id)'>Edit</button><span
+                                                        style="margin-right:10px;"></span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <table class="card-body table table-hover">
+
+                                            <tbody>
+
+                                                <tr>
+                                                    <td style="width:30%">Employer Name</td>
+                                                    <td>{{ref.employer_name}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Job Title</td>
+                                                    <td>{{ref.job_title}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Start Date</td>
+                                                    <td>{{ref.start_date}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>End Date</td>
+                                                    <td>{{ref.end_date}}</td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>country_name</td>
+                                                    <td>{{ref.country_name}}</td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>type_of_business</td>
+
+                                                    <ng-container *ngFor="let  typBusi of  tyeOfBusiness">
+                                                        <td *ngIf="typBusi.id == ref.type_of_business">{{typBusi.name}}
+                                                        </td>
+                                                    </ng-container>
+
+
+
+                                                </tr>
+                                                <tr>
+                                                    <td>un_experience</td>
+                                                    <ng-container *ngFor="let  yno of  yesNo">
+
+                                                        <td *ngIf="yno.id == ref.un_experience">{{yno.name}}</td>
+                                                    </ng-container>
+
+
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>unhcr_experience</td>
+                                                    <ng-container *ngFor="let  yno of  yesNo">
+
+                                                        <td *ngIf="yno.id == ref.unhcr_experience">{{yno.name}}</td>
+                                                    </ng-container>
+                                                </tr>
+                                                <tr>
+                                                    <td>contract_type</td>
+                                                    <ng-container *ngFor="let  cType of  contractType">
+
+                                                        <td *ngIf="cType.id == ref.contract_type">{{cType.name}}</td>
+                                                    </ng-container>
+                                                </tr>
+
+                                                <!-- <tr>
+                                                    <td>Job Description</td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                          
+                                                    <td>{{ref.description_of_duties}}</td>
+                                                </tr> -->
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+                        <button type="button" class="btn btn-success"
+                            (click)='createModal(create_WorkExperience)'>Create</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-sm-12 margin_btm">
+
+            <button class="accordion">
+                Training Details
+            </button>
+
+            <div class="panel">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row" *ngFor="let ref of trainingDetails; let i=index">
+
+
+                            <div class="col-sm-12 margin_btm">
+                                <div class="card bg-color">
+                                    <div class="card-body">
+                                        <div class="card-header">
+                                            <div class="row">
+
+                                                <div class="col-sm-6">
+                                                    <h4 class="col-md-6">Training Details {{i+1}}</h4>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <button class="btn btn-primary"
+                                                        (click)='editTraining(updateTraining,ref.id)'>Edit</button><span
+                                                        style="margin-right:10px;"></span>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <table class="card-body table table-hover">
+
+                                            <tbody>
+
+                                                <tr>
+                                                    <td style="width:30%">Course Title</td>
+                                                    <td>{{ref.course_title}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>School Name</td>
+                                                    <td>{{ref.school_name}}</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>country</td>
+                                                    <td>{{ref.country}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>course_start_date</td>
+                                                    <td>{{ref.course_start_date}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>course_end_date</td>
+                                                    <td>{{ref.course_end_date}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>topic_area</td>
+                                                    <td>{{ref.topic_area}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>training methodology</td>
+                                                    <ng-container *ngFor="let  trainingMetho of  trainingMethodology">
+                                                        <td *ngIf="trainingMetho.id == ref.training_methodology">
+                                                            {{trainingMetho.name}}</td>
+                                                    </ng-container>
+                                                </tr>
+                                                <tr>
+                                                    <td>course_description</td>
+                                                    <td>{{ref.course_description}}</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <button type="button" class="btn btn-success"
+                            (click)='createModal(create_TrainingDetails)'>Create</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-sm-12 margin_btm">
+
+            <button class="accordion">
+                Education
+            </button>
+
+            <div class="panel">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row" *ngFor="let ref of allEducations; let i=index">
+
+
+                            <div class="col-sm-12 margin_btm">
+                                <div class="card bg-color">
+                                    <div class="card-body">
+                                        <div class="card-header">
+                                            <div class="row">
+
+                                                <div class="col-sm-6">
+                                                    <h4 class="col-md-6">Education {{i+1}}</h4>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <button class="btn btn-primary"
+                                                        (click)='editEducationModal(updateEducation,ref.id)'>Edit</button><span
+                                                        style="margin-right:10px;"></span>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <table class="card-body table table-hover">
+
+                                            <tbody>
+
+                                                <tr>
+                                                    <td style="width:30%">Degree Title</td>
+                                                    <td>{{ref.degree_title}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Begin Date</td>
+                                                    <td>{{ref.begin_date}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>End Date</td>
+                                                    <td>{{ref.end_date}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Education Level</td>
+                                                    <td>{{ref.level_of_education}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>School Name</td>
+                                                    <td>{{ref.school_name}}</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <button type="button" class="btn btn-success"
+                            (click)='createModal(create_education)'>Create</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <button class="accordion">
+                References
+            </button>
+
+            <div class="panel">
+                <div class="row" *ngFor="let ref of allReferences; let i=index">
+                    <div class="col-sm-12 margin_btm">
+                        <div class="card bg-color">
+                            <div class="card-body">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <h4 class="col-md-6">Reference {{i+1}}</h4>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button class="btn btn-primary"
+                                                (click)='editModal(update,ref.id)'>Edit</button><span
+                                                style="margin-right:10px;"></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="card-body table table-hover">
+
+                                    <tbody>
+
+                                        <tr>
+                                            <td style="width:30%">Reference Name</td>
+                                            <td>{{ref.reference_name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Title</td>
+                                            <td>{{ref.title}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Employer</td>
+                                            <td>{{ref.employer}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td>{{ref.email_address}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address</td>
+                                            <td>{{ref.address_line_one}}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success" (click)='createModal(create)'>Create</button>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <button class="accordion">
+                Attachment
+            </button>
+
+            <div class="panel">
+
+
+                <div class="row">
+
+                    <div class="col-sm-12 margin_btm">
+                        <div class="card bg-color">
+                            <div class="card-body">
+                                <div class="card-header">
+                                    <div *ngIf="personalDetails?.p11form == null">
+                                        <form [formGroup]="fUploadForm"
+                                            (ngSubmit)="uploadFile(fUploadForm.value,fUploadForm.valid)">
+
+                                            <div class="row">
+                                                <div class="col-sm-1">
+                                                    <h4>P11 File</h4>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-row form-group">
+                                                        <div class="col-sm-8">
+                                                            <div class="profile-image" style="width: 200px;">
+                                                                <input type="file" name="fileUpload" id="fileUpload"
+                                                                    (change)="handleFileInput($event)">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <button type="submit" class="btn btn-primary">Upload File</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                   
+                                </div>
+
+<div *ngIf="personalDetails?.p11form != null">
+    <h4>P11 Form</h4>
+
+    <h5 *ngIf="personalDetails?.p11form == '0' ">{{personalDetails.p11form}}</h5>
+    <button type="submit" class="btn btn-danger">Delete</button>
+</div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 margin_btm">
+                        <div class="card bg-color">
+                            <div class="card-body">
+                                <div class="card-header">
+                                    <div *ngIf="personalDetails?.photo == null">
+                                        <form [formGroup]="photoUploadForm"
+                                            (ngSubmit)="uploadFilePhoto(photoUploadForm.value,photoUploadForm.valid)">
+
+                                            <div class="row">
+
+                                                <div class="col-sm-1">
+                                                    <h4>Photo</h4>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-row form-group">
+                                                        <div class="col-sm-8">
+                                                            <div class="profile-image" style="width: 200px;">
+                                                                <input type="file" name="fileToUploadImage"
+                                                                    id="fileToUploadImage"
+                                                                    (change)="handleFileInputImage($event)">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-5">
+                                                    <button type="submit" class="btn btn-primary">Upload Photo</button>
+                                                </div>
+                                                
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div *ngIf="personalDetails?.coverLetter != null">
+                                        <h4>Cover Letter</h4>
+
+                                        <h5 *ngIf="personalDetails?.coverLetter">{{personalDetails?.coverLetter}}</h5>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </div>
+
+                                   
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<ng-template #create let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Create Reference</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="addForm" (ngSubmit)="createReference(addForm.value,addForm.valid)">
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  asteric_for_required_field">Name</label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="name" class="form-control " placeholder="Name"
+                        [ngClass]="{ 'is-invalid': (submitted && form.name.errors) || (submitted && resErrors && resErrors['name']) }">
+                    <div *ngIf="submitted && form.name.errors" class="invalid-feedback">
+                        <div *ngIf="form.name.errors.required">Name required</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  asteric_for_required_field"> Title</label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="title" class="form-control " placeholder="Title"
+                        [ngClass]="{ 'is-invalid': (submitted && form.title.errors) || (submitted && resErrors && resErrors['title']) }">
+                    <div *ngIf="submitted && form.title.errors" class="invalid-feedback">
+                        <div *ngIf="form.title.errors.required">Title required</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  asteric_for_required_field">Employer</label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="employer" class="form-control " placeholder="Employer"
+                        [ngClass]="{ 'is-invalid': (submitted && form.employer.errors) || (submitted && resErrors && resErrors['employer']) }">
+                    <div *ngIf="submitted && form.employer.errors" class="invalid-feedback">
+                        <div *ngIf="form.employer.errors.required">Employer required</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  asteric_for_required_field">Email</label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="email" class="form-control " placeholder="Email"
+                        [ngClass]="{ 'is-invalid': (submitted && form.email.errors) || (submitted && resErrors && resErrors['email']) }">
+                    <div *ngIf="submitted && form.email.errors" class="invalid-feedback">
+                        <div *ngIf="form.email.errors.required">Email required</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  ">Address</label>
+                <div class="col-sm-8">
+                    <textarea type="text" formControlName="address" class="form-control "
+                        placeholder="Address"></textarea>
+
+
+                </div>
+            </div>
+
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" type="reset">Reset</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<ng-template #update let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Update Reference</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" *ngIf="referenceId">
+        <form [formGroup]="updateForm" (ngSubmit)="updateReference(updateForm.value,updateForm.valid)">
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  asteric_for_required_field"> Name</label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="reference_name" class="form-control " placeholder="Name"
+                        [ngClass]="{ 'is-invalid': submitted && updateform.reference_name.errors }">
+                    <div *ngIf="submitted && updateform.reference_name.errors" class="invalid-feedback">
+                        <div *ngIf="updateform.reference_name.errors.required">Name required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  asteric_for_required_field"> Title</label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="title" class="form-control " placeholder="Title"
+                        [ngClass]="{ 'is-invalid': submitted && updateform.title.errors }">
+                    <div *ngIf="submitted && updateform.title.errors" class="invalid-feedback">
+                        <div *ngIf="updateform.title.errors.required">Title required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  asteric_for_required_field">
+                    Employer</label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="employer" class="form-control " placeholder="Title"
+                        [ngClass]="{ 'is-invalid': submitted && updateform.employer.errors }">
+                    <div *ngIf="submitted && updateform.employer.errors" class="invalid-feedback">
+                        <div *ngIf="updateform.employer.errors.required">Employer required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  asteric_for_required_field"> Email</label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="email_address" class="form-control " placeholder="Title"
+                        [ngClass]="{ 'is-invalid': submitted && updateform.email_address.errors }">
+                    <div *ngIf="submitted && updateform.email_address.errors" class="invalid-feedback">
+                        <div *ngIf="updateform.email_address.errors.required">Email required</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  ">Address</label>
+                <div class="col-sm-8">
+                    <textarea type="text" formControlName="address_line_one" class="form-control "
+                        placeholder="Address"></textarea>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" type="reset">Reset</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!-- end reference-->
+
+<!-- Create education start-->
+<ng-template #create_education let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Create Education</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="addFormEducation"
+            (ngSubmit)="createEducation(addFormEducation.value,addFormEducation.valid)">
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field">Title of
+                    Degree/Certificate</label>
+
+                <input type="text" formControlName="degree_title" class="form-control "
+                    placeholder="Title of Degree/Certificate"
+                    [ngClass]="{ 'is-invalid': (submitted && formedu.degree_title.errors) || (submitted && resErrors && resErrors['degree_title']) }">
+                <div *ngIf="submitted && formedu.degree_title.errors" class="invalid-feedback">
+                    <div *ngIf="formedu.degree_title.errors.required">Title required</div>
+                </div>
+
+
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field col-sm-12"> Begin
+                    Date</label>
+                <div class="input-group datepicker-input col col-sm-12">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="start" ngbDatepicker
+                        #start="ngbDatepicker" [(ngModel)]="startDate" [ngModelOptions]="{standalone: true}"
+                        style="width:80%;">
+                    <button class="input-group-addon" (click)="start.toggle()" type="button">
+                        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </div>
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field col-sm-12"> End
+                    Date</label>
+
+                <div class="input-group datepicker-input col col-sm-12">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="end" ngbDatepicker #end="ngbDatepicker"
+                        [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}">
+                    <button class="input-group-addon" (click)="end.toggle()" type="button">
+                        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </div>
+
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label  asteric_for_required_field">Level of
+                    Education</label>
+
+
+                <select class="form-control " formControlName="level_of_education">
+                    <option *ngFor="let  lvEdu of  levelOfEducation" value={{lvEdu.id}}>{{lvEdu.name}}</option>
+                </select>
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field">School</label>
+
+                <input type="text" formControlName="school_name" class="form-control " placeholder="School"
+                    [ngClass]="{ 'is-invalid': (submitted && formedu.school_name.errors) || (submitted && resErrors && resErrors['school_name']) }">
+                <div *ngIf="submitted && formedu.school_name.errors" class="invalid-feedback">
+                    <div *ngIf="formedu.school_name.errors.required">School required</div>
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" type="reset">Reset</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!--end education create-->
+<!-- udate education start-->
+
+<ng-template #updateEducation let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Update Education</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" *ngIf="referenceId">
+        <form [formGroup]="updateEduForm" (ngSubmit)="updateEducationF(updateEduForm.value,updateEduForm.valid)">
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field"> Degree Title</label>
+                <input type="text" formControlName="degree_title" class="form-control " placeholder="Name"
+                    [ngClass]="{ 'is-invalid': submitted && updateEduform.degree_title.errors }">
+                <div *ngIf="submitted && updateEduform.degree_title.errors" class="invalid-feedback">
+                    <div *ngIf="updateEduform.degree_title.errors.required">Degree Title required</div>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field col-sm-12"> Begin
+                    Date</label>
+                <div class="input-group datepicker-input col col-sm-12">
+
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="begin_date" ngbDatepicker
+                        #begin_date="ngbDatepicker" [(ngModel)]="startDate" [ngModelOptions]="{standalone: true}">
+                    <button class="input-group-addon" (click)="begin_date.toggle()" type="button">
+                        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field col-sm-12"> End
+                    Date</label>
+                <div class="input-group datepicker-input col col-sm-12">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="end" ngbDatepicker #end="ngbDatepicker"
+                        [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}">
+                    <button class="input-group-addon" (click)="end.toggle()" type="button">
+                        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field"> Level of Education
+                </label>
+
+                <select class="form-control " formControlName="level_of_education">
+                    <option *ngFor="let  lvEdu of  levelOfEducation" value={{lvEdu.id}}>{{lvEdu.name}}</option>
+                </select>
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field"> School Name </label>
+
+                <input type="text" formControlName="school_name" class="form-control " placeholder="Level of Education"
+                    [ngClass]="{ 'is-invalid': submitted && updateEduform.school_name.errors }">
+                <div *ngIf="submitted && updateEduform.school_name.errors" class="invalid-feedback">
+                    <div *ngIf="updateEduform.school_name.errors.required">School Name required</div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" type="reset">Reset</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!--end education update-->
+<!-- Create Work Experience start-->
+<ng-template #create_WorkExperience let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Create Work Experience</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="addFormWorkExperience"
+            (ngSubmit)="createWorkExperience(addFormWorkExperience.value,addFormWorkExperience.valid)">
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field">Employer</label>
+
+                <input type="text" formControlName="employer_name" class="form-control "
+                    placeholder="Title of Degree/Certificate"
+                    [ngClass]="{ 'is-invalid': (submitted && formworkExp.employer_name.errors) || (submitted && resErrors && resErrors['employer_name']) }">
+                <div *ngIf="submitted && formworkExp.employer_name.errors" class="invalid-feedback">
+                    <div *ngIf="formworkExp.employer_name.errors.required">Employer required</div>
+                </div>
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field">job_title</label>
+
+                <input type="text" formControlName="job_title" class="form-control "
+                    placeholder="Title of Degree/Certificate"
+                    [ngClass]="{ 'is-invalid': (submitted && formworkExp.job_title.errors) || (submitted && resErrors && resErrors['job_title']) }">
+                <div *ngIf="submitted && formworkExp.job_title.errors" class="invalid-feedback">
+                    <div *ngIf="formworkExp.job_title.errors.required">job_title required</div>
+                </div>
+
+
+            </div>
+
+
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label col-sm-12">description_of_duties
+                </label>
+                <editor class="col-sm-12" apiKey="74s02spfzxve2co8r9s1yqcyuah48qu4krajw9ku1qxmrlj1" [init]="getInitData"
+                    formControlName="description_of_duties"></editor>
+
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label  col-sm-12"> Begin Date</label>
+
+                <div class="input-group datepicker-input col col-sm-12">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="start" ngbDatepicker
+                        #start="ngbDatepicker" [(ngModel)]="startDate" [ngModelOptions]="{standalone: true}"
+                        style="width:80%;">
+                    <button class="input-group-addon" (click)="start.toggle()" type="button">
+                        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label  col-sm-12"> End Date</label>
+
+                <div class="input-group datepicker-input col col-sm-12">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="end" ngbDatepicker #end="ngbDatepicker"
+                        [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}">
+                    <button class="input-group-addon" (click)="end.toggle()" type="button">
+                        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </div>
+
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  ">country_name</label>
+
+                <input type="text" formControlName="country_name" class="form-control "
+                    placeholder="Title of Degree/Certificate">
+            </div>
+
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label  "> type_of_business </label>
+                <select class="form-control " formControlName="type_of_business">
+                    <option *ngFor="let  typeOBusi of  tyeOfBusiness" value={{typeOBusi.id}}>{{typeOBusi.name}}</option>
+                </select>
+
+            </div>
+
+            <div class="form-row form-group">
+                <label class=" col-form-label " for="colFormLabelLg">Is this un_experience?
+                </label>
+
+                <div class="form-row form-group">
+                    <div class="is_supervisor-radio-button">
+                        <input type="radio" id="is_supervisor_yes" class="" value=1 formControlName="un_experience">
+                        <label for="is_supervisor_yes" class="col-form-label ">Yes</label>
+                        <input type="radio" id="is_supervisor_no" class="" value=0 formControlName="un_experience">
+                        <label for="is_supervisor_no" class="col-form-label ">No</label>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row form-group">
+                <label class=" col-form-label " for="colFormLabelLg">Is this unhcr_experience?
+                </label>
+
+                <div class="form-row form-group">
+                    <div class="is_supervisor-radio-button">
+                        <input type="radio" id="is_supervisor_yes" class="" value=1 formControlName="unhcr_experience">
+                        <label for="is_supervisor_yes" class="col-form-label ">Yes</label>
+                        <input type="radio" id="is_supervisor_no" class="" value=0 formControlName="unhcr_experience">
+                        <label for="is_supervisor_no" class="col-form-label ">No</label>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label  "> contract_type </label>
+
+                <select class="form-control " formControlName="contract_type">
+                    <option *ngFor="let  marStatus of  maritalStatus" value={{marStatus.id}}>{{marStatus.name}}</option>
+                </select>
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" type="reset">Reset</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!--end Work Experience create-->
+
+<!-- start update work experience -->
+
+<ng-template #updateWorkExperience let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Update Work Experience</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" *ngIf="referenceId">
+        <form [formGroup]="updateWorkExpForm"
+            (ngSubmit)="updateWorkExperienceF(updateWorkExpForm.value,updateWorkExpForm.valid)">
+
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field">Employer</label>
+
+                <input type="text" formControlName="employer_name" class="form-control "
+                    placeholder="Title of Degree/Certificate"
+                    [ngClass]="{ 'is-invalid': (submitted && updateWorkExpform.employer_name.errors) || (submitted && resErrors && resErrors['employer_name']) }">
+                <div *ngIf="submitted && updateWorkExpform.employer_name.errors" class="invalid-feedback">
+                    <div *ngIf="updateWorkExpform.employer_name.errors.required">Employer required</div>
+                </div>
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field">job_title</label>
+
+                <input type="text" formControlName="job_title" class="form-control "
+                    placeholder="Title of Degree/Certificate"
+                    [ngClass]="{ 'is-invalid': (submitted && updateWorkExpform.job_title.errors) || (submitted && resErrors && resErrors['job_title']) }">
+                <div *ngIf="submitted && updateWorkExpform.job_title.errors" class="invalid-feedback">
+                    <div *ngIf="updateWorkExpform.job_title.errors.required">job_title required</div>
+                </div>
+
+
+            </div>
+
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label col-sm-12">description_of_duties
+                </label>
+                <editor class="col-sm-12" apiKey="74s02spfzxve2co8r9s1yqcyuah48qu4krajw9ku1qxmrlj1" [init]="getInitData"
+                    formControlName="description_of_duties"></editor>
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label  col-sm-12"> Begin Date</label>
+                <div class="input-group datepicker-input col col-sm-12">
+
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="begin_date" ngbDatepicker
+                        #begin_date="ngbDatepicker" [(ngModel)]="startDate" [ngModelOptions]="{standalone: true}">
+                    <button class="input-group-addon" (click)="begin_date.toggle()" type="button">
+                        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </div>
+
+
+            </div>
+
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label col-sm-12 "> End Date</label>
+
+                <div class="input-group datepicker-input col col-sm-12">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="end" ngbDatepicker #end="ngbDatepicker"
+                        [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}">
+                    <button class="input-group-addon" (click)="end.toggle()" type="button">
+                        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </div>
+
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  ">country_name</label>
+                <input type="text" formControlName="country_name" class="form-control "
+                    placeholder="Title of Degree/Certificate">
+            </div>
+
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label  "> Type of business </label>
+                <select class="form-control " formControlName="type_of_business">
+                    <option *ngFor="let  typeBu of  tyeOfBusiness" value={{typeBu.id}}>{{typeBu.name}}</option>
+                </select>
+
+            </div>
+
+
+
+            <div class="form-row form-group">
+                <label class="col-form-label col-sm-12">Is this un_experience?</label><br>
+                <div class="form-check-inline  col-sm-12">
+
+                    <label class="customradio"><span class="radiotextsty">Yes</span>
+                        <input type="radio" checked="checked" id="is_supervisor_yes" class="" value=1
+                            formControlName="un_experience">
+                        <span class="checkmark"></span>
+                    </label>        
+                    <label class="customradio"><span class="radiotextsty">No</span>
+                        <input type="radio" value=0 formControlName="un_experience">
+                        <span class="checkmark"></span>
+                    </label>
+
+                </div>
+            </div>
+
+
+            <div class="form-row form-group">
+                <label class="col-form-label col-sm-12">Is this unhcr_experience?</label><br>
+                <div class="form-check-inline  col-sm-12">
+
+                    <label class="customradio"><span class="radiotextsty">Yes</span>
+                        <input type="radio" checked="checked" id="is_supervisor_yes" class="" value=1
+                            formControlName="unhcr_experience">
+                        <span class="checkmark"></span>
+                    </label>        
+                    <label class="customradio"><span class="radiotextsty">No</span>
+                        <input type="radio" value=0 formControlName="unhcr_experience">
+                        <span class="checkmark"></span>
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label  "> contract_type </label>
+
+                <select class="form-control " formControlName="contract_type">
+                    <option *ngFor="let  cType of  contractType" value={{cType.id}}>{{cType.name}}</option>
+                </select>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" type="reset">Reset</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!--end update work experience -->
+
+
+<!-- Create Personal details start-->
+<ng-template #create_PersonalDetails let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Personal details</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="addFormPersonalDetails"
+            (ngSubmit)="createPersonalDetails(addFormPersonalDetails.value,addFormPersonalDetails.valid)">
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  asteric_for_required_field">First Name
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="first_name" class="form-control "
+                        placeholder="Title of Degree/Certificate"
+                        [ngClass]="{ 'is-invalid': (submitted && formPersonalDetails.first_name.errors) || (submitted && resErrors && resErrors['first_name']) }">
+                    <div *ngIf="submitted && formPersonalDetails.first_name.errors" class="invalid-feedback">
+                        <div *ngIf="formPersonalDetails.first_name.errors.required">First Name required</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  "> Middle Name </label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="middle_name" class="form-control ">
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  "> Last Name </label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="last_name" class="form-control ">
+
+                </div>
+            </div>
+
+
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  "> Maiden Name </label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="maiden_name" class="form-control ">
+
+
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  asteric_for_required_field">Date Of Birth
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="date_of_b" class="form-control "
+                        [ngClass]="{ 'is-invalid': (submitted && formPersonalDetails.date_of_b.errors) || (submitted && resErrors && resErrors['date_of_b']) }">
+                    <div *ngIf="submitted && formPersonalDetails.date_of_b.errors" class="invalid-feedback">
+                        <div *ngIf="formPersonalDetails.date_of_b.errors.required">Date Of Birth is required</div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  asteric_for_required_field"> Marital
+                    Status</label>
+                <div class="col-sm-8">
+
+                    <select class="form-control " formControlName="marital_status"
+                        [ngClass]="{ 'is-invalid': submitted && formPersonalDetails.marital_status.errors }">
+                        <option *ngFor="let maritalStatus of marStatus" value={{marStatus.id}}>{{marStatus.name}}
+                        </option>
+
+                    </select>
+                    <div *ngIf="submitted && formPersonalDetails.marital_status.errors" class="invalid-feedback">
+                        <div *ngIf="formPersonalDetails.marital_status.errors.required">Marital Status required</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  asteric_for_required_field"> Nationalities
+                    at
+                    Birth</label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="nationalities_at_birth" class="form-control "
+                        [ngClass]="{ 'is-invalid': (submitted && formPersonalDetails.nationalities_at_birth.errors) || (submitted && resErrors && resErrors['nationalities_at_birth']) }">
+                    <div *ngIf="submitted && formPersonalDetails.nationalities_at_birth.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="formPersonalDetails.nationalities_at_birth.errors.required"> Nationalities at
+                            required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  ">Current Nationalities
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="current_nationalities" class="form-control ">
+
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  ">Permanent Residency
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="permanent_residency" class="form-control ">
+                </div>
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" type="reset">Reset</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!--end Work Personal details create-->
+
+
+<!-- udate personal details start-->
+
+<ng-template #updatePersonalDetails let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Update Personal Details</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" *ngIf="referenceId">
+        <form [formGroup]="updatePersonalDetailsForm"
+            (ngSubmit)="updatePersonalDetailsF(updatePersonalDetailsForm.value,updatePersonalDetailsForm.valid)">
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field">First Nmae</label>
+
+                <input type="text" formControlName="first_name" class="form-control " placeholder="Name"
+                    [ngClass]="{ 'is-invalid': submitted && updatePersonalDetailsform.first_name.errors }">
+                <div *ngIf="submitted && updatePersonalDetailsform.first_name.errors" class="invalid-feedback">
+                    <div *ngIf="updatePersonalDetailsform.first_name.errors.required">First Nmae required</div>
+                </div>
+
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  "> Middle Name </label>
+                <input type="text" formControlName="middle_name" class="form-control ">
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  "> Last Name </label>
+                <input type="text" formControlName="last_name" class="form-control ">
+            </div>
+
+
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  "> Maiden Name </label>
+                <input type="text" formControlName="maiden_name" class="form-control ">
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  ">Mobile No</label>
+                <input type="text" formControlName="mobile_no" class="form-control ">
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field col-sm-12">Date Of Birth
+                </label>
+                <div class="input-group datepicker-input col col-sm-12">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="start" ngbDatepicker
+                        #start="ngbDatepicker" [(ngModel)]="startDate" [ngModelOptions]="{standalone: true}"
+                        style="width:80%;">
+                    <button class="input-group-addon" (click)="start.toggle()" type="button">
+                        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </div>
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field"> Marital Status</label>
+                <select class="form-control " formControlName="marital_status"
+                    [ngClass]="{ 'is-invalid': submitted && updatePersonalDetailsform.marital_status.errors }">
+                    <option *ngFor="let  marStatus of  maritalStatus" value={{marStatus.id}}>{{marStatus.name}}</option>
+
+                </select>
+                <div *ngIf="submitted && updatePersonalDetailsform.marital_status.errors" class="invalid-feedback">
+                    <div *ngIf="updatePersonalDetailsform.marital_status.errors.required">Marital Status required</div>
+                </div>
+
+
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field"> Nationalities at
+                    Birth</label>
+
+                <input type="text" formControlName="nationalities_at_birth" class="form-control "
+                    [ngClass]="{ 'is-invalid': (submitted && updatePersonalDetailsform.nationalities_at_birth.errors) || (submitted && resErrors && resErrors['nationalities_at_birth']) }">
+                <div *ngIf="submitted && updatePersonalDetailsform.nationalities_at_birth.errors"
+                    class="invalid-feedback">
+                    <div *ngIf="updatePersonalDetailsform.nationalities_at_birth.errors.required"> Nationalities at
+                        required</div>
+                </div>
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  ">Current Nationalities
+                </label>
+
+                <input type="text" formControlName="current_nationalities" class="form-control ">
+
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  ">Permanent Residency
+                </label>
+
+                <input type="text" formControlName="permanent_residency" class="form-control ">
+
+            </div>
+
+
+
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" type="reset">Reset</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!--end personal details update-->
+
+<!-- Create Training details start-->
+<ng-template #create_TrainingDetails let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Training details</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="addFormTraining" (ngSubmit)="createTraining(addFormTraining.value,addFormTraining.valid)">
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field">Course title </label>
+
+                <input type="text" formControlName="course_title" class="form-control "
+                    placeholder="Title of Degree/Certificate"
+                    [ngClass]="{ 'is-invalid': (submitted && formTraining.course_title.errors) || (submitted && resErrors && resErrors['course_title']) }">
+                <div *ngIf="submitted && formTraining.course_title.errors" class="invalid-feedback">
+                    <div *ngIf="formTraining.course_title.errors.required">Course title required</div>
+                </div>
+
+
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label  asteric_for_required_field">School Name</label>
+
+                <input type="text" formControlName="school_name" class="form-control "
+                    placeholder="Title of Degree/Certificate"
+                    [ngClass]="{ 'is-invalid': (submitted && formTraining.school_name.errors) || (submitted && resErrors && resErrors['school_name']) }">
+                <div *ngIf="submitted && formTraining.school_name.errors" class="invalid-feedback">
+                    <div *ngIf="formTraining.school_name.errors.required">School Namerequired</div>
+                </div>
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label  col-sm-12"> Course Start Date
+                </label>
+                <div class="input-group datepicker-input col col-sm-12">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="start" ngbDatepicker
+                        #start="ngbDatepicker" [(ngModel)]="startDate" [ngModelOptions]="{standalone: true}"
+                        style="width:80%;">
+                    <button class="input-group-addon" (click)="start.toggle()" type="button">
+                        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </div>
+
+
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label col-sm-12 "> Course End Date </label>
+                <div class="input-group datepicker-input col col-sm-12">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="end" ngbDatepicker #end="ngbDatepicker"
+                        [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}">
+                    <button class="input-group-addon" (click)="end.toggle()" type="button">
+                        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </div>
+
+
+
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  "> Topic Area </label>
+
+                <input type="text" formControlName="topic_area" class="form-control ">
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label  "> training methodology
+                </label>
+                <select class="form-control " formControlName="training_methodology">
+                    <option *ngFor="let  trainingMet of  trainingMethodology" value={{trainingMet.id}}>
+                        {{trainingMet.name}}</option>
+                </select>
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label col-sm-12">course description
+                </label>
+                <editor class="col-sm-12" apiKey="74s02spfzxve2co8r9s1yqcyuah48qu4krajw9ku1qxmrlj1" [init]="getInitData"
+                    formControlName="course_description"></editor>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" type="reset">Reset</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!--end Work Training details create-->
+
+<!-- udate training start-->
+
+<ng-template #updateTraining let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Update Training</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" *ngIf="referenceId">
+        <form [formGroup]="updateTrainingForm"
+            (ngSubmit)="updateTrainingFun(updateTrainingForm.value,updateTrainingForm.valid)">
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field">Course title </label>
+
+                <input type="text" formControlName="course_title" class="form-control "
+                    placeholder="Title of Degree/Certificate"
+                    [ngClass]="{ 'is-invalid': (submitted && updateTrainingform.course_title.errors) || (submitted && resErrors && resErrors['course_title']) }">
+                <div *ngIf="submitted && updateTrainingform.course_title.errors" class="invalid-feedback">
+                    <div *ngIf="updateTrainingform.course_title.errors.required">Course title required</div>
+                </div>
+
+
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  asteric_for_required_field">School Name</label>
+
+                <input type="text" formControlName="school_name" class="form-control "
+                    placeholder="Title of Degree/Certificate"
+                    [ngClass]="{ 'is-invalid': (submitted && updateTrainingform.school_name.errors) || (submitted && resErrors && resErrors['school_name']) }">
+                <div *ngIf="submitted && updateTrainingform.school_name.errors" class="invalid-feedback">
+                    <div *ngIf="updateTrainingform.school_name.errors.required">School Namerequired</div>
+                </div>
+
+            </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-form-label  col-sm-12"> Course Start Date
+                </label>
+                <div class="input-group datepicker-input col col-sm-12">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="start" ngbDatepicker
+                        #start="ngbDatepicker" [(ngModel)]="startDate" [ngModelOptions]="{standalone: true}"
+                        style="width:80%;">
+                    <button class="input-group-addon" (click)="start.toggle()" type="button">
+                        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label col-sm-12 "> Course End Date </label>
+                <div class="input-group datepicker-input col col-sm-12">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="end" ngbDatepicker #end="ngbDatepicker"
+                        [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}">
+                    <button class="input-group-addon" (click)="end.toggle()" type="button">
+                        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label  "> Topic Area </label>
+
+                <input type="text" formControlName="topic_area" class="form-control ">
+
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label  "> training methodology</label>
+                <select class="form-control " formControlName="training_methodology">
+                    <option *ngFor="let  trainingMet of  trainingMethodology" value={{trainingMet.id}}>
+                        {{trainingMet.name}}</option>
+                </select>
+
+            </div>
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class=" col-form-label col-sm-12">course description
+                </label>
+                <editor class="col-sm-12" apiKey="74s02spfzxve2co8r9s1yqcyuah48qu4krajw9ku1qxmrlj1" [init]="getInitData"
+                    formControlName="course_description"></editor>
+
+            </div>
+
+
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" type="reset">Reset</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!-- end training update -->

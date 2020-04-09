@@ -1,0 +1,184 @@
+<div [@routerTransition]>
+  <app-page-header [heading]="'Job Management'" [icon]="'fa-bar-chart-o'"></app-page-header>
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card bg-color">
+              <div class="card-body">
+                  <div class="card-header">
+                      <div class="row">
+                          <h4 class="col-md-6">Job Post Management</h4>
+                          <div class="col-md-6 text-right">
+                            <button type="button" class="btn btn-primary" [routerLink]="['/job-post-management/new-post']">Post a New Job</button>
+
+                          </div>
+                      </div>
+                  </div>
+                  <table class="card-body table table-hover">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                          
+                              <th>Job Title</th>
+                              <th>Vacancy Notice</th>
+                              <th>Position Number</th>
+                              <th>Position Grade</th>
+                              <th>Closing Date</th>
+
+                              
+                              <th>Shortlist CV</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let postedJob of allPostedJobs; let i=index">
+                              <th scope="row">{{i+1}}</th>
+                              <td>
+                                <a class="btn" [routerLink]="['/job-cv/', postedJob.id]"
+                               >  {{postedJob.job_title}}</a>     
+                                
+                              </td>
+                                                       
+                              <td>{{postedJob.vacancy_notice }}</td>
+                              <td>{{postedJob.position_number}}</td>
+                              <td>{{postedJob.position_grade}}</td>
+                              <td>{{postedJob.closing_date}}</td>
+
+                              <td class="align-middle">  
+                                <button type="button" class="btn btn-primary" [routerLink]="['/shortlist-job-cv',postedJob.id]">Show</button>
+                            
+                            </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <ng-template #create let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">New Job Post</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="addForm" (ngSubmit)="createPostJob(addForm.value,addForm.valid)">
+
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg asteric_for_required_field">Job Title </label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="job_title" class="form-control form-control-lg" placeholder="Name"
+                        [ngClass]="{ 'is-invalid': (submitted && form.job_title.errors) || (submitted && resErrors && resErrors['job_title']) }">
+                    <div *ngIf="submitted && form.job_title.errors" class="invalid-feedback">
+                        <div *ngIf="form.job_title.errors.required">Designation Name required</div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="form-row form-group">
+              <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg asteric_for_required_field">Vacancy Notice</label>
+              <div class="col-sm-8">
+                  <input type="text" formControlName="vacancy_notice" class="form-control form-control-lg" placeholder="Name"
+                      [ngClass]="{ 'is-invalid': (submitted && form.vacancy_notice.errors) || (submitted && resErrors && resErrors['vacancy_notice']) }">
+                  <div *ngIf="submitted && form.vacancy_notice.errors" class="invalid-feedback">
+                      <div *ngIf="form.vacancy_notice.errors.required">Vacancy Notice</div>
+                  </div>
+                  
+              </div>
+          </div>
+          <div class="form-row form-group">
+            <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg asteric_for_required_field">Postition Number</label>
+            <div class="col-sm-8">
+                <input type="text" formControlName="postition_number" class="form-control form-control-lg" placeholder="Name"
+                    [ngClass]="{ 'is-invalid': (submitted && form.postition_number.errors) || (submitted && resErrors && resErrors['postition_number']) }">
+                <div *ngIf="submitted && form.postition_number.errors" class="invalid-feedback">
+                    <div *ngIf="form.postition_number.errors.required">Postition Number</div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="form-row form-group">
+          <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg asteric_for_required_field">location</label>
+          <div class="col-sm-8">
+              <input type="text" formControlName="location" class="form-control form-control-lg" placeholder="Name"
+                  [ngClass]="{ 'is-invalid': (submitted && form.location.errors) || (submitted && resErrors && resErrors['location']) }">
+              <div *ngIf="submitted && form.location.errors" class="invalid-feedback">
+                  <div *ngIf="form.location.errors.required">location required</div>
+              </div>
+              
+          </div>
+      </div>
+      <div class="form-row form-group">
+        <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg asteric_for_required_field">position grade</label>
+        <div class="col-sm-8">
+            <input type="text" formControlName="position_grade" class="form-control form-control-lg" placeholder="Name"
+                [ngClass]="{ 'is-invalid': (submitted && form.position_grade.errors) || (submitted && resErrors && resErrors['position_grade']) }">
+            <div *ngIf="submitted && form.position_grade.errors" class="invalid-feedback">
+                <div *ngIf="form.position_grade.errors.required">position grade required</div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="form-row form-group">
+      <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg asteric_for_required_field">closing date</label>
+      <div class="col-sm-8">
+          <input type="text" formControlName="closing_date" class="form-control form-control-lg" placeholder="Name"
+              [ngClass]="{ 'is-invalid': (submitted && form.closing_date.errors) || (submitted && resErrors && resErrors['closing_date']) }">
+          <div *ngIf="submitted && form.closing_date.errors" class="invalid-feedback">
+              <div *ngIf="form.closing_date.errors.required">closing date</div>
+          </div>
+          
+      </div>
+  </div>
+            <div class="form-row form-group">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg ">organizational_context</label>
+                <div class="col-sm-8">
+                    <textarea type="text" formControlName="organizational_context" class="form-control form-control-lg"
+                    [ngClass]="{ 'is-invalid': (submitted && form.organizational_context.errors) || (submitted && resErrors && resErrors['organizational_context']) }"     placeholder="Description" ></textarea>
+                        <div *ngIf="submitted && form.organizational_context.errors" class="invalid-feedback">
+                          <div *ngIf="form.organizational_context.errors.required">organizational context required</div>
+                      </div>               
+                </div>
+            </div>
+
+
+          <div class="form-row form-group">
+            <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg ">responsibilities	</label>
+            <div class="col-sm-8">
+                <textarea type="text" formControlName="responsibilities" class="form-control form-control-lg"
+                [ngClass]="{ 'is-invalid': (submitted && form.responsibilities.errors) || (submitted && resErrors && resErrors['responsibilities']) }"     placeholder="Description" ></textarea>
+                    <div *ngIf="submitted && form.responsibilities.errors" class="invalid-feedback">
+                      <div *ngIf="form.responsibilities.errors.required">responsibilities required</div>
+                  </div>               
+            </div>
+        </div>
+
+        <div class="form-row form-group">
+          <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg ">accountability_and_authority</label>
+          <div class="col-sm-8">
+              <textarea type="text" formControlName="accountability_and_authority" class="form-control form-control-lg"
+              [ngClass]="{ 'is-invalid': (submitted && form.accountability_and_authority.errors) || (submitted && resErrors && resErrors['accountability_and_authority']) }"     placeholder="Description" ></textarea>
+                  <div *ngIf="submitted && form.accountability_and_authority.errors" class="invalid-feedback">
+                    <div *ngIf="form.accountability_and_authority.errors.required"> accountability_and_authority required</div>
+                </div>               
+          </div>
+      </div>
+
+      <div class="form-row form-group">
+        <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg ">minimum qualification</label>
+        <div class="col-sm-8">
+            <textarea type="text" formControlName="minimum_qualification" class="form-control form-control-lg"
+            [ngClass]="{ 'is-invalid': (submitted && form.minimum_qualification.errors) || (submitted && resErrors && resErrors['minimum_qualification']) }"     placeholder="Description" ></textarea>
+                <div *ngIf="submitted && form.minimum_qualification.errors" class="invalid-feedback">
+                  <div *ngIf="form.minimum_qualification.errors.required">minimum qualification required</div>
+              </div>               
+        </div>
+    </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" type="reset">Reset</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</ng-template>

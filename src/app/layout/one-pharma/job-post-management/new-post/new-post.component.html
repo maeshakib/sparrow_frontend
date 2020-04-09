@@ -1,0 +1,240 @@
+<div [@routerTransition]>
+  <app-page-header [heading]="'Create User'" [icon]="'fa-bar-chart-o'"></app-page-header>
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card bg-color">
+              <div class="card-body">
+                  <form [formGroup]="addForm" (ngSubmit)="createPostJob(addForm.value,addForm.valid)">
+                      <div class="card-header">
+                          <div class="row">
+                              <h4 class="col-md-6"><b>Post a New Job</b></h4>
+                              <div class="col-md-6 text-right">
+                                  <a type="button" class="btn btn-primary" [routerLink]="['/job-post-management']">List
+                                      All</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="modal-body">
+                          <div class="row justify-content-center">
+                              <div class="col-md-5">
+                                <div class="form-row form-group">
+                                  <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field">Job Title </label>
+                                  <div class="col-sm-8">
+                                      <input type="text" formControlName="job_title" class="form-control form-control-lg" placeholder="Name"
+                                          [ngClass]="{ 'is-invalid': (submitted && form.job_title.errors) || (submitted && resErrors && resErrors['job_title']) }">
+                                      <div *ngIf="submitted && form.job_title.errors" class="invalid-feedback">
+                                          <div *ngIf="form.job_title.errors.required">Designation Name required</div>
+                                      </div>
+                                      
+                                  </div>
+                              </div>
+                              <div class="form-row form-group">
+                                <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field">Postition Number</label>
+                                <div class="col-sm-8">
+                                    <input type="text" formControlName="position_number" class="form-control form-control-lg" placeholder="Name"
+                                        [ngClass]="{ 'is-invalid': (submitted && form.position_number.errors) || (submitted && resErrors && resErrors['position_number']) }">
+                                    <div *ngIf="submitted && form.position_number.errors" class="invalid-feedback">
+                                        <div *ngIf="form.position_number.errors.required">Postition Number</div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                              <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field">position grade</label>
+                              <div class="col-sm-8">
+                                  <input type="text" formControlName="position_grade" class="form-control form-control-lg" placeholder="Name"
+                                      [ngClass]="{ 'is-invalid': (submitted && form.position_grade.errors) || (submitted && resErrors && resErrors['position_grade']) }">
+                                  <div *ngIf="submitted && form.position_grade.errors" class="invalid-feedback">
+                                      <div *ngIf="form.position_grade.errors.required">position grade required</div>
+                                  </div>
+                                  
+                              </div>
+                          </div>
+                             
+                           
+                             
+                              </div>
+                              <div class="col-md-5">
+                                <div class="form-row form-group">
+                                  <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field">Vacancy Notice</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" formControlName="vacancy_notice" class="form-control form-control-lg" placeholder="Name"
+                                          [ngClass]="{ 'is-invalid': (submitted && form.vacancy_notice.errors) || (submitted && resErrors && resErrors['vacancy_notice']) }">
+                                      <div *ngIf="submitted && form.vacancy_notice.errors" class="invalid-feedback">
+                                          <div *ngIf="form.vacancy_notice.errors.required">Vacancy Notice</div>
+                                      </div>
+                                      
+                                  </div>
+                              </div>
+                              <div class="form-row form-group">
+                                <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field">location</label>
+                                <div class="col-sm-8">
+                                    <input type="text" formControlName="location" class="form-control form-control-lg" placeholder="Name"
+                                        [ngClass]="{ 'is-invalid': (submitted && form.location.errors) || (submitted && resErrors && resErrors['location']) }">
+                                    <div *ngIf="submitted && form.location.errors" class="invalid-feedback">
+                                        <div *ngIf="form.location.errors.required">location required</div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                              <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg asteric_for_required_field">closing date</label>
+                              <div class="col-sm-8">
+                                  <input type="text" formControlName="closing_date" class="form-control form-control-lg" placeholder="Name"
+                                      [ngClass]="{ 'is-invalid': (submitted && form.closing_date.errors) || (submitted && resErrors && resErrors['closing_date']) }">
+                                  <div *ngIf="submitted && form.closing_date.errors" class="invalid-feedback">
+                                      <div *ngIf="form.closing_date.errors.required">closing date</div>
+                                  </div>
+                                  
+                              </div>
+                          </div>
+                                
+                           
+                                
+                            
+                              </div>
+                          </div>
+                          <div class="row justify-content-center">
+                              <div class="col-md-10">
+                                 
+                                  <div class="form-row form-group adjust-input-field">
+                                      <label class="col-form-label col-form-label-lg" for="colFormLabelLg">
+                                        organizational_context </label>
+                                          <textarea type="text" formControlName="organizational_context" class="form-control form-control-lg"
+                                          [ngClass]="{ 'is-invalid': (submitted && form.organizational_context.errors) || (submitted && resErrors && resErrors['organizational_context']) }"     placeholder="Description" ></textarea>
+                                              <div *ngIf="submitted && form.organizational_context.errors" class="invalid-feedback">
+                                                <div *ngIf="form.organizational_context.errors.required">organizational context required</div>
+                                            </div>   
+                                  </div>
+
+
+                                  
+                                  <div class="form-row form-group adjust-input-field">
+                                      <label for="colFormLabelLg" class="col-form-label col-form-label-lg">responsibilities</label>
+                                      <textarea type="text" formControlName="responsibilities" class="form-control form-control-lg"
+                                      [ngClass]="{ 'is-invalid': (submitted && form.responsibilities.errors) || (submitted && resErrors && resErrors['responsibilities']) }"     placeholder="Description" ></textarea>
+                                          <div *ngIf="submitted && form.responsibilities.errors" class="invalid-feedback">
+                                            <div *ngIf="form.responsibilities.errors.required">responsibilities required</div>
+                                        </div>               
+                                  </div>
+                                  <div class="form-row form-group adjust-input-field">
+                                    <label for="colFormLabelLg" class="col-form-label col-form-label-lg">accountability_and_authority</label>
+                                    <textarea type="text" formControlName="accountability_and_authority" class="form-control form-control-lg"
+                                    [ngClass]="{ 'is-invalid': (submitted && form.accountability_and_authority.errors) || (submitted && resErrors && resErrors['accountability_and_authority']) }"     placeholder="Description" ></textarea>
+                                        <div *ngIf="submitted && form.accountability_and_authority.errors" class="invalid-feedback">
+                                          <div *ngIf="form.accountability_and_authority.errors.required"> accountability_and_authority required</div>
+                                      </div>              
+                                </div>
+                                <div class="form-row form-group adjust-input-field">
+                                  <label for="colFormLabelLg" class="col-form-label col-form-label-lg">minimum qualification</label>
+                                  <textarea type="text" formControlName="minimum_qualification" class="form-control form-control-lg"
+                                  [ngClass]="{ 'is-invalid': (submitted && form.minimum_qualification.errors) || (submitted && resErrors && resErrors['minimum_qualification']) }"     placeholder="Description" ></textarea>
+                                      <div *ngIf="submitted && form.minimum_qualification.errors" class="invalid-feedback">
+                                        <div *ngIf="form.minimum_qualification.errors.required">minimum qualification required</div>
+                                    </div>                
+                              </div>
+                                  <div class="submit-button form-row form-group justify-content-end">
+                                      <a type="button" class="btn btn-secondary" [routerLink]="['/user-management']">Cancel</a>
+                                      <button class="btn btn-primary" type="submit">Submit</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- modal goes here -->
+<ng-template #showLocationModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+      <h4 class="modal-title">Select Location Here</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body" id="location-modal-body">
+      <div class="form-row form-group" *ngFor="let location of allLocation; let i=index">
+          <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg">Select
+              {{location.name}}</label>
+          <div class="col-md-9">
+              <select class="form-control form-control-lg" (change)='getLocationLevelId($event,i)'>
+                  <option value="">Pick a {{location.name}}</option>
+                  <option *ngFor="let level of location.loclist" label={{level.name}} value={{level.id}}>{{level.name}}</option>
+              </select>
+          </div>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="confirmAddLocation()">Okay</button>
+  </div>
+</ng-template>
+
+
+
+<ng-template #showDepartmentModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+      <h4 class="modal-title">Select Department Here</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body" id="department-modal-body">
+      <select class="form-control form-control-lg" (change)='getDepartmentName($event)' [ngClass]="{ 'is-invalid': submitted && form.designation_id.errors }">
+          <option value="">Pick a Department</option>
+          <option *ngFor="let department of allDepartment" value={{department.id}}>{{department.name}}</option>
+      </select>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="confirmAddDepartment()">Okay</button>
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+<ng-template #showDesignationModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+      <h4 class="modal-title">Select Designation Here</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body" id="designation-modal-body">
+      <select class="form-control form-control-lg" (change)='getDesignationName($event)' [ngClass]="{ 'is-invalid': submitted && form.designation_id.errors }">
+          <option value="">Pick a Designation</option>
+          <option *ngFor="let designation of allDesignation" value={{designation.id}}>{{designation.name}}</option>
+      </select>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="confirmAddDesignation()">Okay</button>
+  </div>
+</ng-template>
+
+
+<ng-template #showDepotModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+      <h4 class="modal-title">Select Depot Here</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body" id="department-modal-body">
+      <select class="form-control form-control-lg" (change)='getDepotName($event)' [ngClass]="{ 'is-invalid': submitted && form.designation_id.errors }">
+          <option value="">Pick a Depot</option>
+          <option *ngFor="let department of allDepot" value={{department.id}}>{{department.name}}</option>
+      </select>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="confirmAddDepot()">Okay</button>
+  </div>
+</ng-template>
